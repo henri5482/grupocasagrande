@@ -1,265 +1,363 @@
-"use client"
+"use client";
 import {
   AnimatePresence,
   motion,
   useMotionValueEvent,
   useScroll,
-  Variants, // <-- Add this import
+  Variants,
 } from "framer-motion";
-import { Menu, X } from "lucide-react";
+
+// ✅ Importamos los iconos desde react-icons/lu.
+import {
+  LuMenu,
+  LuX,
+  LuLinkedin,
+  LuYoutube,
+  LuMail,
+  LuPhone,
+  LuMapPin,
+} from "react-icons/lu";
+import { IconType } from "react-icons"; // 💡 Importamos el tipo IconType para los iconos.
+
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FaFacebook, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import { MdOutgoingMail } from "react-icons/md";
 
-const links = [
+// --- Data Configuration ---
+// 💡 Actualizamos los tipos para usar IconType.
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+interface SocialLink {
+  href: string;
+  label: string;
+  Icon: IconType;
+}
+
+interface ContactInfoItemProps {
+  text: string;
+  href: string;
+  Icon: IconType;
+}
+
+const navLinks: NavLink[] = [
   { href: "/cursosall", label: "Cursos" },
   { href: "/certificado", label: "Certificados" },
   { href: "/docentes", label: "Profesores" },
   { href: "/about", label: "Nosotros" },
-  // { href: "/profesor", label: "Trabaja con nosotros" },
 ];
 
-const Navbar = () => {
-  const pathname = usePathname();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isHomePage = pathname === "/";
-  const [hasScrolled, setHasScrolled] = useState(false);
-  const { scrollY } = useScroll();
-  const [prevScrollY, setPrevScrollY] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+const socialLinks: SocialLink[] = [
+  { href: "https://facebook.com", label: "Facebook", Icon: FaFacebook  },
+  { href: "https://linkedin.com", label: "LinkedIn", Icon: FaLinkedin  },
+  { href: "https://youtube.com", label: "YouTube", Icon: FaYoutube  },
+];
 
-  // --- Animation Logic for Navbar Visibility on Scroll ---
+const contactInfo: ContactInfoItemProps[] = [
+  {
+    text: "laboratorio@geofal.com.pe",
+    href: "mailto:laboratorio@geofal.com.pe",
+    Icon: MdOutgoingMail ,
+  },
+  { text: "(+51) 981 696 426", href: "tel:+51981696426", Icon: FaWhatsapp  },
+  {
+    text: "Av. Rio Marañon N° 763, Los Olivos",
+    href: "https://maps.google.com/?q=Av.+Rio+Marañon+N°+763,+Los+Olivos,+Perú",
+    Icon: LuMapPin,
+  },
+];
+
+// --- Sub-Components ---
+const ContactInfoItem = ({ text, href, Icon }: ContactInfoItemProps) => (
+  <a
+    href={href}
+    className="flex items-center gap-2 text-xs text-white transition-opacity hover:opacity-80"
+  >
+    <Icon className="h-4 w-4" />
+    <span>{text}</span>
+  </a>
+);
+
+const SocialLinks = ({ className = "text-white" }: { className?: string }) => (
+  <div className="flex items-center gap-4">
+    {socialLinks.map(({ href, label, Icon }) => (
+      <a
+        key={href}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+        className={`transition-opacity hover:opacity-80 ${className}`}
+      >
+        <Icon className="h-5 w-5" />
+      </a>
+    ))}
+  </div>
+);
+
+const TopBar = () => (
+  <div className="hidden bg-[#2c3e50] text-white md:block">
+    <div className="container mx-auto flex h-10 items-center justify-between px-4">
+      <div className="flex items-center gap-6">
+        {contactInfo.map((item) => (
+          <ContactInfoItem key={item.text} {...item} />
+        ))}
+      </div>
+      <SocialLinks />
+    </div>
+  </div>
+);
+
+const DesktopMenu = ({
+  pathname,
+  hoverVariants,
+}: {
+  pathname: string;
+  hoverVariants: Variants;
+}) => (
+  <nav className="hidden items-center md:flex">
+    {navLinks.map((link) => (
+      <motion.div
+        key={link.href}
+        initial="initial"
+        whileHover="hover"
+        variants={hoverVariants}
+      >
+        <Link
+          href={link.href}
+          className={`relative px-4 py-2 font-medium text-gray-700 transition-colors duration-300 ${
+            pathname === link.href
+              ? "font-bold text-red-600"
+              : "hover:text-red-600"
+          }`}
+        >
+          {link.label}
+          {pathname === link.href && (
+            <motion.span
+              layoutId="nav-underline"
+              className="absolute bottom-0 left-0 h-0.5 w-full bg-red-600"
+              transition={{ type: "spring", bounce: 0.25, duration: 0.6 }}
+            />
+          )}
+        </Link>
+      </motion.div>
+    ))}
+  </nav>
+);
+
+const MobileMenuButton = ({
+  isOpen,
+  toggle,
+}: {
+  isOpen: boolean;
+  toggle: () => void;
+}) => (
+  <motion.button
+    className="z-[100] rounded-md p-2 text-red-600 transition-transform duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 md:hidden"
+    onClick={toggle}
+    aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+    whileTap={{ scale: 0.9 }}
+  >
+    <AnimatePresence initial={false} mode="wait">
+      <motion.div
+        key={isOpen ? "x" : "menu"}
+        initial={{ rotate: -90, opacity: 0 }}
+        animate={{ rotate: 0, opacity: 1 }}
+        exit={{ rotate: 90, opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        {/* ✅ Usamos los componentes de React Icons. */}
+        {isOpen ? <LuX className="h-7 w-7" /> : <LuMenu className="h-7 w-7" />}
+      </motion.div>
+    </AnimatePresence>
+  </motion.button>
+);
+
+// --- Main Navbar Component ---
+
+const Navbar = () => {
+  const pathname = usePathname() || "";
+
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const [isVisible, setIsVisible] = useState(true);
+  const [prevScrollY, setPrevScrollY] = useState(0);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (!mobileMenuOpen) {
-      const isAtTop = latest < 50;
-      const scrollingUp = latest < prevScrollY;
-      setIsVisible(isAtTop || scrollingUp);
-      setHasScrolled(latest > 50);
-    } else {
-      setIsVisible(true);
-    }
+    if (mobileMenuOpen) return;
+    const isAtTop = latest < 50;
+    const isScrollingUp = latest < prevScrollY;
+    setIsVisible(isAtTop || isScrollingUp);
     setPrevScrollY(latest);
   });
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  // --- Framer Motion Variants ---
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileMenuOpen]);
 
-  const mobileMenuContainerVariants: Variants = { // <-- Type here
+  // --- Framer Motion Variants ---
+  const navbarVariants: Variants = {
+    visible: {
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 20 },
+    },
+    hidden: { y: "-100%", transition: { duration: 0.3, ease: "easeInOut" } },
+  };
+
+  const mobileMenuContainerVariants: Variants = {
     open: {
       x: 0,
-      opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 250,
-        damping: 25,
+        stiffness: 300,
+        damping: 30,
         when: "beforeChildren",
         staggerChildren: 0.08,
       },
     },
     closed: {
       x: "100%",
-      opacity: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-        when: "afterChildren",
-        staggerChildren: 0.05,
-        staggerDirection: -1,
-      },
+      transition: { duration: 0.3, ease: "easeInOut", when: "afterChildren" },
     },
   };
 
-  const mobileMenuItemVariants: Variants = { // <-- Type here
-    open: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
-    closed: { opacity: 0, y: -10, transition: { duration: 0.15 } },
-  };
-
-  const navbarVariants: Variants = { // <-- Type here
-    initial: isHomePage ? { y: -100, opacity: 0 } : { y: 0, opacity: 1 },
-    visible: {
-      y: 0,
+  const mobileMenuItemVariants: Variants = {
+    open: {
       opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 120,
-        damping: 18,
-        delay: isHomePage && !hasScrolled ? 1.5 : 0,
-      },
+      y: 0,
+      transition: { type: "spring", stiffness: 300, damping: 24 },
     },
-    hidden: {
-      y: -100,
-      opacity: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-      },
-    },
+    closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
   };
 
-  const overlayVariants: Variants = { // <-- Type here
+  const linkHoverVariants: Variants = {
+    hover: { scale: 1.05 },
+    initial: { scale: 1 },
+  };
+
+  const overlayVariants: Variants = {
+    visible: { opacity: 1 },
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.3 } },
-    exit: { opacity: 0, transition: { duration: 0.2 } },
-  };
-
-  const linkHoverVariants: Variants = { // <-- Type here
-    hover: {
-      scale: 1.05,
-      color: "#1a5b9b",
-      transition: { type: "spring", stiffness: 400, damping: 10 },
-    },
-    initial: {
-      scale: 1,
-      color: "#0d70af",
-    },
   };
 
   return (
-    <AnimatePresence>
-      <motion.nav
-        key="navbar"
-        className="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm"
-        animate={isVisible ? "visible" : "hidden"}
+    <>
+      <motion.header
+        className="fixed top-0 left-0 right-0 z-50 bg-white/80 shadow-sm backdrop-blur-md"
         variants={navbarVariants}
+        animate={isVisible ? "visible" : "hidden"}
+        initial="visible"
       >
-        <div className="container mx-auto px-4 py-3 md:py-4">
-          <div className="flex justify-between items-center relative z-50">
-            {/* Logo y nombre */}
-            <Link href="/" className="flex items-center group relative h-12 w-48 md:h-16 md:w-64 lg:w-80 xl:w-96">
-              <motion.div
-                className="relative h-full w-full"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              >
-                <Image
-                  src="/logo.png"
-                  alt="Club de Ingenieros"
-                  fill
-                  sizes="(max-width: 768px) 192px, (max-width: 1200px) 256px, 384px"
-                  className="object-contain object-left transition-transform group-hover:scale-105"
-                  priority
-                />
-              </motion.div>
-            </Link>
-
-            {/* Menú desktop */}
-            <div className="hidden md:flex items-center">
-              {links.map((link, index) => (
-                <div key={link.href} className="flex items-center">
-                  <motion.div
-                    initial="initial"
-                    whileHover="hover"
-                    variants={linkHoverVariants}
-                  >
-                    <Link
-                      href={link.href}
-                      className={`relative px-4 py-1 font-medium text-red-600 ${
-                        pathname === link.href ? "font-semibold" : ""
-                      } transition-colors duration-200`}
-                    >
-                      {link.label}
-                      {pathname === link.href && (
-                        <motion.span
-                          layoutId="nav-underline"
-                          className="absolute left-0 bottom-0 w-full h-0.5 bg-red-600"
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                        />
-                      )}
-                    </Link>
-                  </motion.div>
-                  {index < links.length - 1 && (
-                    <span className="text-red-600 mx-1 opacity-70">|</span>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Botón móvil (Hamburguesa / X) */}
-            <motion.button
-              className="md:hidden p-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 transition-transform duration-200 z-[100]"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Menú de navegación"
-              whileTap={{ scale: 0.9 }}
+        <TopBar />
+        <div className="container mx-auto flex h-16 items-center justify-between px-4 md:h-20">
+          <Link href="/" className="flex items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              {mobileMenuOpen ? (
-                <X className="w-8 h-8 text-red-600" />
-              ) : (
-                <Menu className="w-8 h-8 text-red-600" />
-              )}
-            </motion.button>
+              <Image
+                src="/logo.png"
+                alt="Logo de la empresa"
+                width={100}
+                height={48}
+                className="h-10 w-auto md:h-12"
+              />
+            </motion.div>
+          </Link>
+          <div className="flex items-center gap-6">
+            <DesktopMenu
+              pathname={pathname}
+              hoverVariants={linkHoverVariants}
+            />
+            <MobileMenuButton
+              isOpen={mobileMenuOpen}
+              toggle={() => setMobileMenuOpen(!mobileMenuOpen)}
+            />
           </div>
         </div>
+      </motion.header>
 
-        {/* Contenedor principal para el menú móvil y el overlay */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <>
-              {/* Overlay (behind the menu, captures clicks to close) */}
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={overlayVariants}
-                className="fixed inset-0 bg-black bg-opacity-60 z-40 md:hidden"
-                onClick={() => setMobileMenuOpen(false)}
-              />
-
-              {/* Menú móvil deslizante desde la derecha, estilo Shadcn/UI */}
-              <motion.div
-                initial="closed"
-                animate="open"
-                exit="closed"
-                variants={mobileMenuContainerVariants}
-                className="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white shadow-xl md:hidden z-50 flex flex-col border-l border-gray-200"
-              >
-                {/* Header del menú con botón de cierre */}
-                <div className="flex justify-end p-4 border-b bg-white">
-                  <motion.button
-                    className="p-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 transition-transform duration-200"
-                    onClick={() => setMobileMenuOpen(false)}
-                    aria-label="Cerrar menú"
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <X className="w-7 h-7 text-gray-500 hover:text-red-500" />
-                  </motion.button>
-                </div>
-
-                {/* Contenido del menú */}
-                <div className="flex flex-col p-4 space-y-2 overflow-y-auto flex-grow">
-                  {links.map((link) => (
-                    <motion.div key={link.href} variants={mobileMenuItemVariants} className="w-full">
-                      <Link
-                        href={link.href}
-                        className={`
-                          block w-full text-left py-2 px-3 rounded-md text-base font-medium
-                          text-gray-700 hover:text-red-400 hover:bg-gray-100
-                          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400
-                          transition-all duration-200
-                          ${pathname === link.href ? "bg-blue-50 text-red-400" : ""}
-                        `}
-                      >
-                        {link.label}
-                      </Link>
-                    </motion.div>
+      {/* --- Mobile Menu --- */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            <motion.div
+              variants={overlayVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-40 bg-black/60 md:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <motion.div
+              variants={mobileMenuContainerVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className="fixed top-0 right-0 z-50 flex h-full w-4/5 max-w-sm flex-col bg-white shadow-xl"
+            >
+              <div className="flex items-center justify-between border-b p-4">
+                <span className="font-bold text-gray-800">Menú</span>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-label="Cerrar menú"
+                  className="rounded-md p-1 text-gray-500 transition-colors hover:bg-gray-100 hover:text-red-600"
+                >
+                  <LuX className="h-6 w-6" />
+                </button>
+              </div>
+              <nav className="flex-grow space-y-2 overflow-y-auto p-4">
+                {navLinks.map((link) => (
+                  <motion.div key={link.href} variants={mobileMenuItemVariants}>
+                    <Link
+                      href={link.href}
+                      className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors ${
+                        pathname === link.href
+                          ? "bg-red-50 text-red-600"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+              <div className="space-y-4 border-t p-4 text-sm">
+                <div className="space-y-3">
+                  {contactInfo.map((item) => (
+                    <a
+                      key={item.text}
+                      href={item.href}
+                      className="flex items-center gap-3 text-gray-600 transition-colors hover:text-red-600"
+                    >
+                      <item.Icon className="h-4 w-4 flex-shrink-0" />
+                      <span>{item.text}</span>
+                    </a>
                   ))}
                 </div>
-
-                {/* Optional: Add a footer or branding at the bottom of the mobile menu */}
-                <div className="p-4 border-t border-gray-200 text-sm text-gray-500 text-center">
-                  <p>© 2025 Club de Ingenieros. Todos los derechos reservados.</p>
+                <div className="border-t pt-4">
+                  <SocialLinks className="text-gray-600" />
                 </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-      </motion.nav>
-    </AnimatePresence>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
