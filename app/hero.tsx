@@ -2,9 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import {  LuPhone } from "react-icons/lu";
+import { LuPhone } from "react-icons/lu";
 import Link from "next/link";
-import { ReactNode, useEffect, useState, useCallback } from "react"; // <-- Se importó `useCallback`
+import { ReactNode, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 
 // --- DATOS DE LOS SLIDES (Sin cambios) ---
@@ -57,7 +57,6 @@ const slidesData: {
 
 // --- Variantes de Animación (Corregidas para tipado) ---
 const slideVariants = {
-    
   enter: (direction: number) => ({
     x: direction > 0 ? "100%" : "-100%",
     opacity: 0,
@@ -66,7 +65,7 @@ const slideVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      type: "just",
+      type: "tween", // <-- Se corrigió "just" a "tween"
       duration: 0.7,
       ease: [0.56, 0.03, 0.12, 1.04],
     },
@@ -102,25 +101,16 @@ export default function HeroCarousel() {
   const slideIndex = Math.abs(page % slidesData.length);
   const activeSlide = slidesData[slideIndex];
 
-  // Corrección 1: Envolver `paginate` con `useCallback`
-  // Esto evita que la función cambie en cada render y elimina la advertencia de ESLint.
   const paginate = useCallback((newDirection: number) => {
     setPage(([currentPage]) => [currentPage + newDirection, newDirection]);
   }, []);
 
-  // goToSlide no se usa en el código actual, pero se mantiene si se necesita en el futuro.
-  // const goToSlide = (newSlideIndex: number) => {
-  //   const newDirection = newSlideIndex > slideIndex ? 1 : -1;
-  //   setPage([newSlideIndex, newDirection]);
-  // };
-
-  // Corrección 2: Ajustar el `useEffect` para usar `paginate`
   useEffect(() => {
     const interval = setInterval(() => {
       paginate(1);
     }, 7000);
     return () => clearInterval(interval);
-  }, [paginate]); // <-- Se agregó `paginate` y se eliminó `page`
+  }, [paginate]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onDragEnd = (_e: any, { offset, velocity }: any) => {
@@ -210,9 +200,6 @@ export default function HeroCarousel() {
         </AnimatePresence>
       </div>
 
-      <div className="hidden lg:flex xl:hidden absolute bottom-5 left-1/2 z-30 -translate-x-1/2 space-x-3 md:bottom-8">
-        {/* Se quitó el código de los puntos indicadores aquí, pero se puede añadir si lo necesitas */}
-      </div>
       <div className="absolute inset-x-0 bottom-5 z-40 flex justify-center space-x-2 md:bottom-8">
         {slidesData.map((_slide, index) => (
           <button
@@ -228,7 +215,7 @@ export default function HeroCarousel() {
         ))}
       </div>
 
-     
+      {/* Se han quitado los botones de navegación que estaban importados pero no se usaban */}
     </main>
   );
 }
