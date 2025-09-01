@@ -46,25 +46,27 @@ interface ContactInfoItemProps {
 }
 
 const navLinks: NavLink[] = [
-  { href: "/cursosall", label: "Cursos" },
+  { href: "/", label: "Incio" },
+  { href: "/nosotros", label: "Nosotro" },
+  { href: "/cursosall", label: "Servicios" },
   { href: "/certificado", label: "Certificados" },
   { href: "/docentes", label: "Profesores" },
   { href: "/about", label: "Nosotros" },
 ];
 
 const socialLinks: SocialLink[] = [
-  { href: "https://facebook.com", label: "Facebook", Icon: FaFacebook  },
-  { href: "https://linkedin.com", label: "LinkedIn", Icon: FaLinkedin  },
-  { href: "https://youtube.com", label: "YouTube", Icon: FaYoutube  },
+  { href: "https://facebook.com", label: "Facebook", Icon: FaFacebook },
+  { href: "https://linkedin.com", label: "LinkedIn", Icon: FaLinkedin },
+  { href: "https://youtube.com", label: "YouTube", Icon: FaYoutube },
 ];
 
 const contactInfo: ContactInfoItemProps[] = [
   {
     text: "laboratorio@geofal.com.pe",
     href: "mailto:laboratorio@geofal.com.pe",
-    Icon: MdOutgoingMail ,
+    Icon: MdOutgoingMail,
   },
-  { text: "(+51) 981 696 426", href: "tel:+51981696426", Icon: FaWhatsapp  },
+  { text: "(+51) 981 696 426", href: "tel:+51981696426", Icon: FaWhatsapp },
   {
     text: "Av. Rio Marañon N° 763, Los Olivos",
     href: "https://maps.google.com/?q=Av.+Rio+Marañon+N°+763,+Los+Olivos,+Perú",
@@ -132,15 +134,15 @@ const DesktopMenu = ({
           href={link.href}
           className={`relative px-4 py-2 font-medium text-gray-700 transition-colors duration-300 ${
             pathname === link.href
-              ? "font-bold text-red-600"
-              : "hover:text-red-600"
+              ? "font-bold text-[#373737]"
+              : "hover:text-[#737373]"
           }`}
         >
           {link.label}
           {pathname === link.href && (
             <motion.span
               layoutId="nav-underline"
-              className="absolute bottom-0 left-0 h-0.5 w-full bg-red-600"
+              className="absolute bottom-0 left-0 h-0.5 w-full bg-[#373737]"
               transition={{ type: "spring", bounce: 0.25, duration: 0.6 }}
             />
           )}
@@ -158,7 +160,7 @@ const MobileMenuButton = ({
   toggle: () => void;
 }) => (
   <motion.button
-    className="z-[100] rounded-md p-2 text-red-600 transition-transform duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 md:hidden"
+    className="z-[100] rounded-md p-2 text-[#373737] transition-transform duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-[#373737] md:hidden "
     onClick={toggle}
     aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
     whileTap={{ scale: 0.9 }}
@@ -255,7 +257,7 @@ const Navbar = () => {
   return (
     <>
       <motion.header
-        className="fixed top-0 left-0 right-0 z-50 bg-white/80 shadow-sm backdrop-blur-md"
+        className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm backdrop-blur-md"
         variants={navbarVariants}
         animate={isVisible ? "visible" : "hidden"}
         initial="visible"
@@ -311,11 +313,11 @@ const Navbar = () => {
               className="fixed top-0 right-0 z-50 flex h-full w-4/5 max-w-sm flex-col bg-white shadow-xl"
             >
               <div className="flex items-center justify-between border-b p-4">
-                <span className="font-bold text-gray-800">Menú</span>
+                <span className="font-bold text-[#373737]">Menú</span>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   aria-label="Cerrar menú"
-                  className="rounded-md p-1 text-gray-500 transition-colors hover:bg-gray-100 hover:text-red-600"
+                  className="rounded-md p-1 text-[#373737] transition-colors hover:bg-gray-100 hover:text-[#373737]"
                 >
                   <LuX className="h-6 w-6" />
                 </button>
@@ -327,8 +329,8 @@ const Navbar = () => {
                       href={link.href}
                       className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors ${
                         pathname === link.href
-                          ? "bg-red-50 text-red-600"
-                          : "text-gray-700 hover:bg-gray-100"
+                          ? "bg-gray-300 text-black"
+                          : "text-[#373737] hover:bg-gray-100"
                       }`}
                     >
                       {link.label}
@@ -342,7 +344,7 @@ const Navbar = () => {
                     <a
                       key={item.text}
                       href={item.href}
-                      className="flex items-center gap-3 text-gray-600 transition-colors hover:text-red-600"
+                      className="flex items-center gap-3 text-[#373737] transition-colors hover:text-red-600"
                     >
                       <item.Icon className="h-4 w-4 flex-shrink-0" />
                       <span>{item.text}</span>
@@ -350,7 +352,7 @@ const Navbar = () => {
                   ))}
                 </div>
                 <div className="border-t pt-4">
-                  <SocialLinks className="text-gray-600" />
+                  <SocialLinks className="text-[#373737]" />
                 </div>
               </div>
             </motion.div>
