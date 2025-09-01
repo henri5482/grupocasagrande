@@ -1,13 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { AnimatePresence, motion } from "framer-motion";
-import { LuPhone } from "react-icons/lu";
+import { AnimatePresence, motion, Variants, Transition } from "framer-motion";
+import { LuPhone, LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import Link from "next/link";
 import { ReactNode, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 
-// --- DATOS DE LOS SLIDES (Sin cambios) ---
+// --- DATOS DE LOS SLIDES ---
 const slidesData: {
   id: number;
   title: string;
@@ -55,8 +55,8 @@ const slidesData: {
   },
 ];
 
-// --- Variantes de Animación (Corregidas para tipado) ---
-const slideVariants = {
+// --- Variantes de Animación (Completamente tipadas) ---
+const slideVariants: Variants = {
   enter: (direction: number) => ({
     x: direction > 0 ? "100%" : "-100%",
     opacity: 0,
@@ -65,39 +65,46 @@ const slideVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      type: "tween", // <-- Se corrigió "just" a "tween"
+      type: "tween" as const,
       duration: 0.7,
-      ease: [0.56, 0.03, 0.12, 1.04],
-    },
+      ease: [0.56, 0.03, 0.12, 1.04] as const,
+    } as Transition,
   },
   exit: (direction: number) => ({
     x: direction < 0 ? "100%" : "-100%",
     opacity: 0,
     transition: {
-      type: "tween",
+      type: "tween" as const,
       duration: 0.7,
-      ease: [0.56, 0.03, 0.12, 1.04],
-    },
+      ease: [0.56, 0.03, 0.12, 1.04] as const,
+    } as Transition,
   }),
 };
 
-const contentVariants = {
+const contentVariants: Variants = {
   initial: { opacity: 0, y: 20 },
   animate: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, staggerChildren: 0.2, delayChildren: 0.3 },
+    transition: { 
+      duration: 0.5, 
+      staggerChildren: 0.2, 
+      delayChildren: 0.3 
+    } as Transition,
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  animate: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.5 } as Transition 
+  },
 };
 
 export default function HeroCarousel() {
   const [[page, direction], setPage] = useState([0, 0]);
-
   const slideIndex = Math.abs(page % slidesData.length);
   const activeSlide = slidesData[slideIndex];
 
@@ -112,8 +119,10 @@ export default function HeroCarousel() {
     return () => clearInterval(interval);
   }, [paginate]);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onDragEnd = (_e: any, { offset, velocity }: any) => {
+  const onDragEnd = (
+    _e: MouseEvent | TouchEvent | PointerEvent,
+    { offset, velocity }: { offset: { x: number }; velocity: { x: number } }
+  ) => {
     const swipeConfidenceThreshold = 10000;
     const swipe = Math.abs(offset.x) * velocity.x;
     if (swipe < -swipeConfidenceThreshold) {
@@ -124,7 +133,7 @@ export default function HeroCarousel() {
   };
 
   return (
-    <main className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black">
+    <main className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black px-2">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={page}
@@ -215,7 +224,7 @@ export default function HeroCarousel() {
         ))}
       </div>
 
-      {/* Se han quitado los botones de navegación que estaban importados pero no se usaban */}
+    
     </main>
   );
 }
