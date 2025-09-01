@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion, Variants, Transition } from "framer-motion";
-import { LuPhone, LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import { LuPhone, } from "react-icons/lu";
 import Link from "next/link";
 import { ReactNode, useEffect, useState, useCallback } from "react";
 import Image from "next/image";

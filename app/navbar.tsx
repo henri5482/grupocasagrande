@@ -8,15 +8,7 @@ import {
 } from "framer-motion";
 
 // ✅ Importamos los iconos desde react-icons/lu.
-import {
-  LuMenu,
-  LuX,
-  LuLinkedin,
-  LuYoutube,
-  LuMail,
-  LuPhone,
-  LuMapPin,
-} from "react-icons/lu";
+import { LuMenu, LuX, LuMapPin } from "react-icons/lu";
 import { IconType } from "react-icons"; // 💡 Importamos el tipo IconType para los iconos.
 
 import Image from "next/image";
@@ -25,6 +17,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaFacebook, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { MdOutgoingMail } from "react-icons/md";
+import { Button } from "@/components/ui/button";
 
 // --- Data Configuration ---
 // 💡 Actualizamos los tipos para usar IconType.
@@ -46,12 +39,12 @@ interface ContactInfoItemProps {
 }
 
 const navLinks: NavLink[] = [
-  { href: "/", label: "Incio" },
-  { href: "/nosotros", label: "Nosotro" },
-  { href: "/cursosall", label: "Servicios" },
-  { href: "/certificado", label: "Certificados" },
-  { href: "/docentes", label: "Profesores" },
-  { href: "/about", label: "Nosotros" },
+  { href: "/", label: "Inicio" },
+  { href: "/nosotros", label: "Nosotros" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/proyectos", label: "Proyectos" },
+  { href: "/about", label: "Blog" },
+  { href: "/docentes", label: "Contacto" },
 ];
 
 const socialLinks: SocialLink[] = [
@@ -173,7 +166,6 @@ const MobileMenuButton = ({
         exit={{ rotate: 90, opacity: 0 }}
         transition={{ duration: 0.2 }}
       >
-        {/* ✅ Usamos los componentes de React Icons. */}
         {isOpen ? <LuX className="h-7 w-7" /> : <LuMenu className="h-7 w-7" />}
       </motion.div>
     </AnimatePresence>
@@ -271,24 +263,35 @@ const Navbar = () => {
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="Logo de la empresa"
                 width={100}
                 height={48}
-                className="h-10 w-auto md:h-12"
+                className="h-12 w-auto md:h-15"
               />
             </motion.div>
           </Link>
-          <div className="flex items-center gap-6">
-            <DesktopMenu
-              pathname={pathname}
-              hoverVariants={linkHoverVariants}
-            />
-            <MobileMenuButton
-              isOpen={mobileMenuOpen}
-              toggle={() => setMobileMenuOpen(!mobileMenuOpen)}
-            />
+
+          {/* Menú de escritorio en el centro */}
+          <DesktopMenu pathname={pathname} hoverVariants={linkHoverVariants} />
+
+          {/* Nuevo botón "Cotiza" a la derecha */}
+          <div className="hidden md:flex items-center">
+            <Link href="/cotiza">
+              <Button
+                size="lg"
+                className="bg-[#2c3e50] hover:bg-[#373737] text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-300"
+              >
+                ¡COTIZAR AHORA!
+              </Button>
+            </Link>
           </div>
+
+          {/* Botón para abrir el menú móvil */}
+          <MobileMenuButton
+            isOpen={mobileMenuOpen}
+            toggle={() => setMobileMenuOpen(!mobileMenuOpen)}
+          />
         </div>
       </motion.header>
 
@@ -339,6 +342,21 @@ const Navbar = () => {
                 ))}
               </nav>
               <div className="space-y-4 border-t p-4 text-sm">
+                {/* Nuevo botón de cotización en el menú móvil */}
+                <motion.div
+                  variants={mobileMenuItemVariants}
+                  className="w-full"
+                >
+                  <Link href="/cotiza">
+                    <Button
+                      size="lg"
+                      className="w-full bg-[#2c3e50] hover:bg-[#373737] text-white font-semibold rounded-lg shadow-md"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      ¡COTIZAR AHORA!
+                    </Button>
+                  </Link>
+                </motion.div>
                 <div className="space-y-3">
                   {contactInfo.map((item) => (
                     <a
