@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { FaAward } from 'react-icons/fa';
 import { LuMapPin } from "react-icons/lu";
