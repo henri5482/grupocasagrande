@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion, Variants, Transition } from "framer-motion";
-import { LuPhone } from "react-icons/lu";
 import Link from "next/link";
 import { ReactNode, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
@@ -19,13 +18,13 @@ const slidesData: {
 }[] = [
   {
     id: 1,
-    title: "SOBRE NOSOTROS",
+    title: "NUESTROS SERVICIOS",
     subtitle:
       "Nuestra prioridad es la calidad y la formalidad en cada proyecto. Nos comprometemos con la excelencia y la mejora continua.",
     imageSrc: "/hero01.jpg",
-    buttonText: "",
-    buttonLink: "",
-    buttonIcon: "",
+    buttonText: "Ver Brouchure",
+    buttonLink: "/",
+    
   },
 
 ];

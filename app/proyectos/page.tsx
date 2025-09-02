@@ -5,7 +5,6 @@ const Projects = () => {
   return (
     <div className="bg-white">
       <Navbar />
-            <h1 className="text-9xl text-red-600 pt-96">Proyectos</h1>
     </div>
   );
 };

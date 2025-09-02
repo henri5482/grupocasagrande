@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "geotecnia",
+    "titulo": "Geotecnia",
+    "descripcion": "Estudios y soluciones en geotecnia para proyectos seguros y eficientes.",
+    "contenido": "Ofrecemos estudios de suelos, análisis de estabilidad de taludes, cimentaciones profundas y soluciones geotécnicas avanzadas.",
+    "imagen": "/hero.jpg",
+    "detalles": [
+      "Estudios de mecánica de suelos",
+      "Análisis de estabilidad de taludes",
+      "Diseño de cimentaciones",
+      "Soluciones para obras civiles"
+    ]
+  },
+  {
+    "slug": "concreto",
+    "titulo": "Concreto",
+    "descripcion": "Servicios especializados en concreto estructural y de alta resistencia.",
+    "contenido": "Diseñamos y ejecutamos proyectos de concreto con altos estándares de calidad.",
+    "imagen": "/servicios/concreto.jpg",
+    "detalles": [
+      "Concreto premezclado",
+      "Ensayos de resistencia",
+      "Control de calidad",
+      "Bombeo especializado"
+    ]
+  },
+  {
+    "slug": "pavimentos",
+    "titulo": "Pavimentos",
+    "descripcion": "Construcción y mantenimiento de pavimentos de calidad.",
+    "contenido": "Pavimentación de carreteras, calles y obras civiles con materiales de alta durabilidad.",
+    "imagen": "/servicios/pavimentos.jpg",
+    "detalles": [
+      "Pavimentos rígidos y flexibles",
+      "Mantenimiento y rehabilitación",
+      "Tecnología moderna",
+      "Durabilidad garantizada"
+    ]
+  }
+]
