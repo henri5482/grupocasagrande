@@ -15,9 +15,8 @@ import {
 const Footer = () => {
   // Data for "Acerca de" section links
   const aboutLinks = [
-    { name: "¿Sobre Nosotros?", href: "/about" },
-    { name: "El equipo", href: "/profesor" },
-    { name: "Los profesores", href: "/profesor" },
+    { name: "¿Sobre Nosotros?", href: "/nosotros" },
+    { name: "El equipo", href: "/nosotros" },
     { name: "Enunciado de misión", href: "/about" },
     { name: "Marca y logotipo", href: "/about" },
   ];
@@ -95,7 +94,7 @@ const Footer = () => {
           </Link>
           <button
             onClick={scrollToTop}
-            className="flex items-center text-sm font-medium text-red-600 hover:text-red-950 transition-colors group"
+            className="flex items-center text-sm font-medium text-[#2c3e50] hover:text-red-950 transition-colors group"
             aria-label="Volver arriba"
           >
             Volver arriba
@@ -133,7 +132,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-y-10 lg:gap-x-12 mb-8 sm:mb-12">
           {/* Section: JEDteam (About) */}
           <div className="py-2">
-            <h2 className="text-lg font-bold mb-4 text-red-600">
+            <h2 className="text-lg font-bold mb-4 text-[#2c3e50]">
               Club de Ingenieros
             </h2>
             <nav>
@@ -144,7 +143,7 @@ const Footer = () => {
                       href={link.href}
                       className="text-gray-700 hover:text-red-600 hover:underline transition-colors flex items-center text-sm group"
                     >
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-red-600 mr-2 flex-shrink-0 group-hover:bg-red-600 transition-colors"></span>
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2c3e50] mr-2 flex-shrink-0 group-hover:bg-red-600 transition-colors"></span>
                       {link.name}
                     </Link>
                   </li>
@@ -155,7 +154,7 @@ const Footer = () => {
 
           {/* Section: Conecta con EDteam */}
           <div className="py-2">
-            <h2 className="text-lg font-bold mb-4 text-red-600">
+            <h2 className="text-lg font-bold mb-4 text-[#2c3e50]">
               Conecta con Nosotros
             </h2>
             <nav className="space-y-4 sm:space-y-6">
@@ -171,7 +170,7 @@ const Footer = () => {
                           href={link.href}
                           className="text-gray-700 hover:text-red-600 hover:underline transition-colors flex items-center text-sm group"
                         >
-                          <span className="inline-block w-1.5 h-1.5 rounded-full bg-red-600 mr-2 flex-shrink-0 group-hover:bg-red-600 transition-colors"></span>
+                          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2c3e50] mr-2 flex-shrink-0 group-hover:bg-red-600 transition-colors"></span>
                           {link.name}
                         </Link>
                       </li>
@@ -184,7 +183,7 @@ const Footer = () => {
 
           {/* Section: Nuestros productos */}
           <div className="py-2">
-            <h2 className="text-lg font-bold mb-4 text-red-600">
+            <h2 className="text-lg font-bold mb-4 text-[#2c3e50]">
               Nuestros productos
             </h2>
             <nav>
@@ -195,7 +194,7 @@ const Footer = () => {
                       href={link.href}
                       className="text-gray-700 hover:text-red-600 hover:underline transition-colors flex items-center text-sm group"
                     >
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-red-600 mr-2 flex-shrink-0 group-hover:bg-red-500 transition-colors"></span>
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2c3e50] mr-2 flex-shrink-0 group-hover:bg-red-500 transition-colors"></span>
                       {link.name}
                     </Link>
                   </li>
@@ -215,7 +214,7 @@ const Footer = () => {
                 <Link
                   key={social.name}
                   href={social.href}
-                  className="text-red-600 hover:text-[#0d70af] transition-colors p-2 rounded-full hover:scale-110 transform transition-transform"
+                  className="text-[#2c3e50] hover:text-[#0d70af] transition-colors p-2 rounded-full hover:scale-110 transform transition-transform"
                   aria-label={social.name}
                 >
                   <social.icon size={22} />
@@ -244,7 +243,7 @@ const Footer = () => {
         {/* Copyright and Legal Links */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-2 sm:pt-4">
           <div className="text-gray-600 text-xs sm:text-sm mb-3 md:mb-0 text-center md:text-left leading-relaxed">
-            © {new Date().getFullYear()} Club de Ingenieros.
+            © {new Date().getFullYear()} Casagrande.
             Todos los derechos reservados.
           </div>
           <nav className="flex flex-wrap justify-center gap-x-3 sm:gap-x-4 gap-y-1 sm:gap-y-2 items-center">
