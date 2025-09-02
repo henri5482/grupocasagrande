@@ -214,7 +214,7 @@ const Footer = () => {
                 <Link
                   key={social.name}
                   href={social.href}
-                  className="text-[#2c3e50] hover:text-[#0d70af] transition-colors p-2 rounded-full hover:scale-110 transform transition-transform"
+                  className="text-[#2c3e50] hover:text-[#0d70af] transition-colors p-2 rounded-full hover:scale-110 transform"
                   aria-label={social.name}
                 >
                   <social.icon size={22} />
@@ -230,7 +230,7 @@ const Footer = () => {
             <Link
               key={social.name}
               href={social.href}
-              className="text-red-600 hover:text-[#0d70af] transition-colors p-2 sm:p-3 rounded-full hover:scale-110 transform transition-transform"
+              className="text-red-600 hover:text-[#0d70af] transition-colors p-2 sm:p-3 rounded-full hover:scale-110 transform "
               aria-label={social.name}
             >
               <social.icon size={24} className="w-6 h-6" />

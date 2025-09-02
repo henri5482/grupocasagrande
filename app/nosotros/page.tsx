@@ -1,11 +1,14 @@
 import Navbar from "../navbar";
+import Familia from "./familia";
+import HeroNosotros from "./hero";
 
 
 const Projects = () => {
   return (
     <div className="bg-white">
       <Navbar />
-            <h1 className="text-9xl text-red-600 pt-96">nosotros</h1>
+            <HeroNosotros/>
+            <Familia />
     </div>
   );
 };
