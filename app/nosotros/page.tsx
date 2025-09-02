@@ -1,5 +1,6 @@
 import Footer from "../footer";
 import Navbar from "../navbar";
+import CertificadoNosotros from "./certificadoNosotros";
 import Familia from "./familia";
 import HeroNosotros from "./hero";
 import Trayectoria from "./trayectoria";
@@ -15,7 +16,7 @@ const Projects = () => {
       <Familia />
       <Valores />
       <Trayectoria />
-
+      <CertificadoNosotros />
 
       <Footer />
     </div>
