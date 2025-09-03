@@ -13,10 +13,11 @@ interface NavItem {
 
 // Define los datos para los elementos de navegación
 const serviciosNav: NavItem[] = [
-  { slug: "geotecnia", titulo: "Laboratorio de Ensayo de Materiales" },
-  { slug: "concreto", titulo: "Control de Calidad en Obras Civiles" },
-  { slug: "pavimentos", titulo: "Estudios Geotécnicos" },
+  { slug: "geotecnico", titulo: "Laboratorio de Ensayo de Materiales" },
+  { slug: "consultoria", titulo: "Control de Calidad en Obras Civiles" },
+  { slug: "laboratorio", titulo: "Estudios Geotécnicos" },
   { slug: "muros", titulo: "Implementación de Laboratorio en Obra" },
+  
 ];
 
 const ServicioNav = () => {
@@ -41,7 +42,7 @@ const ServicioNav = () => {
                   border-l-4 hover:shadow-md
                   ${
                     isActive
-                      ? "bg-blue-900 text-white border-blue-500 shadow-lg"
+                      ? "bg-[#2c3e50] text-white border-[#2c3e50] shadow-lg"
                       : "bg-white text-gray-800 border-gray-300 hover:border-blue-400 hover:bg-blue-50"
                   }
                 `}
@@ -49,7 +50,7 @@ const ServicioNav = () => {
                 <div className="flex items-start">
                   <div className={`
                     flex-shrink-0 w-3 h-3 rounded-full mt-1 mr-3 transition-all duration-300
-                    ${isActive ? "bg-white" : "bg-blue-500 group-hover:bg-blue-600"}
+                    ${isActive ? "bg-white" : "bg-[#2c3e50] group-hover:bg-blue-600"}
                   `}></div>
                   <span className="text-sm font-medium leading-tight">
                     {servicio.titulo}

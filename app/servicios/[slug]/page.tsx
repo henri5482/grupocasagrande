@@ -9,6 +9,8 @@ import Footer from "@/app/footer";
 import ServicioNav from "@/app/servicios/ServicioNav";
 import NotFoundPage from "@/app/not-found";
 import { ZoomIn, X } from "lucide-react";
+import { FaClock, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { Button } from "@/components/ui/button";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -17,7 +19,11 @@ interface PageProps {
 const ServicioPage = ({ params }: PageProps) => {
   const { slug } = React.use(params);
   const servicio = servicios.find((s) => s.slug === slug);
-  const [imagenModal, setImagenModal] = useState({ abierto: false, src: "", titulo: "" });
+  const [imagenModal, setImagenModal] = useState({
+    abierto: false,
+    src: "",
+    titulo: "",
+  });
 
   if (!servicio) return <NotFoundPage />;
 
@@ -97,14 +103,14 @@ const ServicioPage = ({ params }: PageProps) => {
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Contenido textual */}
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-blue-500 pb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-[#2c3e50] pb-2">
                     {categoria.titulo}
                   </h3>
                   <p className="text-gray-600 mb-4">{categoria.descripcion}</p>
                   <ul className="space-y-2">
                     {categoria.ensayos.map((ensayo, idx) => (
                       <li key={idx} className="flex items-start">
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        <span className="w-1.5 h-1.5 bg-[#2c3e50] rounded-full mt-2 mr-3 flex-shrink-0"></span>
                         <span className="text-gray-700">{ensayo}</span>
                       </li>
                     ))}
@@ -113,14 +119,21 @@ const ServicioPage = ({ params }: PageProps) => {
 
                 {/* Galería de imágenes - MEJORADA */}
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">Galería</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                    Galería
+                  </h4>
                   <div className="space-y-4">
                     {/* Imagen principal grande */}
                     {categoria.imagenes.length > 0 && (
                       <motion.div
                         whileHover={{ scale: 1.02 }}
                         className="relative group cursor-pointer rounded-lg overflow-hidden border-2 border-gray-300"
-                        onClick={() => abrirModalImagen(categoria.imagenes[0], categoria.titulo)}
+                        onClick={() =>
+                          abrirModalImagen(
+                            categoria.imagenes[0],
+                            categoria.titulo
+                          )
+                        }
                       >
                         <div className="aspect-video relative">
                           <Image
@@ -130,7 +143,8 @@ const ServicioPage = ({ params }: PageProps) => {
                             className="object-cover transition-transform duration-300 group-hover:scale-105"
                             onError={(e) => {
                               // Fallback para imagen que no carga
-                              e.currentTarget.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yMDAgMTUwTDE1MCAxMDBIMjUwTDIwMCAxNTBaIiBmaWxsPSIjOTlBQUJDIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2QzczODAiPkltYWdlbiBubyBlbmNvbnRyYWRhPC90ZXh0Pgo8L3N2Zz4K";
+                              e.currentTarget.src =
+                                "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0yMDAgMTUwTDE1MCAxMDBIMjUwTDIwMCAxNTBaIiBmaWxsPSIjOTlBQUJDIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2QzczODAiPkltYWdlbiBubyBlbmNvbnRyYWRhPC90ZXh0Pgo8L3N2Zz4K";
                             }}
                           />
                         </div>
@@ -146,29 +160,36 @@ const ServicioPage = ({ params }: PageProps) => {
                     {/* Miniaturas de las otras imágenes */}
                     {categoria.imagenes.length > 1 && (
                       <div className="grid grid-cols-3 gap-2">
-                        {categoria.imagenes.slice(1, 4).map((imagen, imgIndex) => (
-                          <motion.div
-                            key={imgIndex + 1}
-                            whileHover={{ scale: 1.05 }}
-                            className="relative group cursor-pointer rounded-md overflow-hidden border border-gray-200"
-                            onClick={() => abrirModalImagen(imagen, categoria.titulo)}
-                          >
-                            <div className="aspect-square relative">
-                              <Image
-                                src={imagen}
-                                alt={`${categoria.titulo} - Imagen ${imgIndex + 2}`}
-                                fill
-                                className="object-cover transition-transform duration-300 group-hover:scale-110"
-                                onError={(e) => {
-                                  e.currentTarget.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik01MCA1MEwzNy41IDM3LjVINjIuNUw1MCA1MFoiIGZpbGw9IiM5OUFBQkMiLz4KPC9zdmc+Cg==";
-                                }}
-                              />
-                            </div>
-                            <div className="absolute inset-0  bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                              <ZoomIn className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            </div>
-                          </motion.div>
-                        ))}
+                        {categoria.imagenes
+                          .slice(1, 4)
+                          .map((imagen, imgIndex) => (
+                            <motion.div
+                              key={imgIndex + 1}
+                              whileHover={{ scale: 1.05 }}
+                              className="relative group cursor-pointer rounded-md overflow-hidden border border-gray-200"
+                              onClick={() =>
+                                abrirModalImagen(imagen, categoria.titulo)
+                              }
+                            >
+                              <div className="aspect-square relative">
+                                <Image
+                                  src={imagen}
+                                  alt={`${categoria.titulo} - Imagen ${
+                                    imgIndex + 2
+                                  }`}
+                                  fill
+                                  className="object-cover transition-transform duration-300 group-hover:scale-110"
+                                  onError={(e) => {
+                                    e.currentTarget.src =
+                                      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik01MCA1MEwzNy41IDM3LjVINjIuNUw1MCA1MFoiIGZpbGw9IiM5OUFBQkMiLz4KPC9zdmc+Cg==";
+                                  }}
+                                />
+                              </div>
+                              <div className="absolute inset-0  bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <ZoomIn className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                              </div>
+                            </motion.div>
+                          ))}
                       </div>
                     )}
                   </div>
@@ -185,7 +206,7 @@ const ServicioPage = ({ params }: PageProps) => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="bg-blue-50 rounded-lg p-8 border border-blue-200 mb-12"
         >
-          <h3 className="text-2xl font-bold text-blue-900 text-center mb-6">
+          <h3 className="text-2xl font-bold text-[#2c3e50] text-center mb-6">
             ACREDITACIONES
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -194,7 +215,7 @@ const ServicioPage = ({ params }: PageProps) => {
                 key={index}
                 className="bg-white rounded-lg p-4 shadow-sm text-center"
               >
-                <div className="text-blue-900 font-bold text-lg mb-2">
+                <div className="text-[#2c3e50] font-bold text-lg mb-2">
                   ACREDITADO ANTE INACAL
                 </div>
                 <div className="text-sm text-gray-600">
@@ -210,35 +231,45 @@ const ServicioPage = ({ params }: PageProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="bg-gray-50 rounded-lg p-8 border border-gray-200"
+          className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg"
         >
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-10">
+            {/* Contacto */}
             <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Contacto</h3>
-              <div className="space-y-3">
+              <h3 className="text-2xl font-bold text-[#2c3e50] mb-6 border-b pb-2 border-gray-100">
+                Contáctanos
+              </h3>
+              <div className="space-y-4">
                 <p className="flex items-center text-gray-700">
-                  <span className="w-4 h-4 bg-blue-500 rounded-full mr-3 flex items-center justify-center text-white text-xs">📞</span>
+                  <FaPhoneAlt className="text-[#2c3e50] w-5 h-5 mr-3" />
                   +1 (234) 567-8900
                 </p>
                 <p className="flex items-center text-gray-700">
-                  <span className="w-4 h-4 bg-blue-500 rounded-full mr-3 flex items-center justify-center text-white text-xs">✉️</span>
+                  <FaEnvelope className="text-[#2c3e50] w-5 h-5 mr-3" />
                   info@laboratorio.com
                 </p>
                 <p className="flex items-center text-gray-700">
-                  <span className="w-4 h-4 bg-blue-500 rounded-full mr-3 flex items-center justify-center text-white text-xs">🕘</span>
+                  <FaClock className="text-[#2c3e50] w-5 h-5 mr-3" />
                   Lun-Vie: 8:00 AM - 6:00 PM
                 </p>
               </div>
             </div>
+
+            {/* Solicitar servicio */}
             <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Solicitar servicio</h3>
-              <div className="space-y-3">
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 border-gray-100">
+                Solicitar servicio
+              </h3>
+              <div className="space-y-4">
+                <Button className="w-full bg-[#2c3e50] hover:bg-[#1a242f] text-white py-6 text-lg rounded-xl shadow-md">
                   Solicitar cotización
-                </button>
-                <button className="w-full border border-blue-600 text-blue-600 font-medium py-3 px-4 rounded-lg transition-colors duration-200 hover:bg-blue-50">
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full border-[#2c3e50] text-[#2c3e50] hover:bg-blue-50 py-6 text-lg rounded-xl"
+                >
                   Agendar visita técnica
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -265,7 +296,7 @@ const ServicioPage = ({ params }: PageProps) => {
             >
               <X className="w-6 h-6" />
             </button>
-            
+
             <div className="bg-white rounded-lg overflow-hidden shadow-2xl">
               <div className="relative aspect-video">
                 <Image
@@ -274,11 +305,12 @@ const ServicioPage = ({ params }: PageProps) => {
                   fill
                   className="object-contain"
                   onError={(e) => {
-                    e.currentTarget.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDgwMCA2MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik00MDAgMzAwTDMwMCAyMDBINTAwTDQwMCAzMDBaIiBmaWxsPSIjOTlBQUJDIi8+Cjx0ZXh0IHg9IjQwMCIgeT0iMzYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM2QzczODAiPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pgo8L3N2Zz4K";
+                    e.currentTarget.src =
+                      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDgwMCA2MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik00MDAgMzAwTDMwMCAyMDBINTAwTDQwMCAzMDBaIiBmaWxsPSIjOTlBQUJDIi8+Cjx0ZXh0IHg9IjQwMCIgeT0iMzYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM2QzczODAiPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pgo8L3N2Zz4K";
                   }}
                 />
               </div>
-              
+
               <div className="p-4 bg-gray-900">
                 <h4 className="text-white font-semibold text-center text-lg">
                   {imagenModal.titulo}

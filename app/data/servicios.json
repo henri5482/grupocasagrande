@@ -85,5 +85,179 @@
     "Asesoría técnica incluida",
     "Certificados de calidad"
   ]
+},
+ {
+  "slug": "consultoria",
+  "titulo": "Consultoría Geotécnica",
+  "descripcion": "Servicios de consultoría especializada en geotecnia.",
+  "contenido": "Brindamos asesoría técnica y soluciones a medida para proyectos geotécnicos.",
+  "imagen": "/hero03.jpg",
+  "imagen01": "/hero01.jpg",
+  "titulo01": "Ensayos de Laboratorio",
+  "subtitulo01": "Realizamos análisis especializados con equipos de última generación y personal calificado.",
+  "categorias": [
+    {
+      "titulo": "Ensayos estándares en Suelo",
+      "imagenes": ["/hero01.jpg"],
+      "ensayos": [
+        "Análisis Granulométrico en Suelo (ASTM D6913)",
+        "Límite Liquido y Plástico del Suelo (ASTM D4318)",
+        "Pródico Modificado (ASTM D1537)",
+        "Otros"
+      ],
+      "descripcion": "Ensayos estándar para caracterización de suelos"
+    },
+    {
+      "titulo": "Ensayos en agregados",
+      "imagenes": ["/hero04.jpg", "/hero04.jpg", "/hero04.jpg", "/hero04.jpg"],
+      "ensayos": [
+        "Análisis Granulométrico en Agregados (ASTM C136)",
+        "Partículas planas y alargadas (ASTM 4791)",
+        "Porcentaje de partículas fracturadas (ASTM D3521)",
+        "Abrasión partículas mayores (ASTM C339)",
+        "Abrasión partículas menores (ASTM C131)",
+        "Otros"
+      ],
+      "descripcion": "Ensayos para caracterización de agregados"
+    },
+    {
+      "titulo": "Ensayos especiales en Suelo",
+      "imagenes": ["/hero02.jpg", "/hero02.jpg", "/hero02.jpg", "/hero02.jpg"],
+      "ensayos": [
+        "CBR de suelos compactados (ASTM D1883)",
+        "Compresión no confinada",
+        "Consolidación unidimensional",
+        "Compresión triaxial UU, CU, CD",
+        "Otros"
+      ],
+      "descripcion": "Ensayos especializados para suelos"
+    },
+    {
+      "titulo": "Ensayos en Concreto",
+      "imagenes": ["/hero03.jpg", "/hero03.jpg", "/hero03.jpg", "/hero03.jpg"],
+      "ensayos": [
+        "Compresión de testigos cilíndricos de concreto (ASTM C59)",
+        "Otros"
+      ],
+      "descripcion": "Ensayos para control de calidad de concreto"
+    },
+    {
+      "titulo": "Ensayos químicos",
+      "imagenes": ["/hero04.jpg", "/hero04.jpg", "/hero04.jpg", "/hero04.jpg"],
+      "ensayos": [
+        "Ensayos químicos en suelo, agregados y agua",
+        "Ensayos químicos en suelo y agregados"
+      ],
+      "descripcion": "Análisis químicos especializados"
+    },
+    {
+      "titulo": "Otros ensayos",
+      "imagenes": ["/hero.jpg", "/hero.jpg", "/hero.jpg", "/hero.jpg"],
+      "ensayos": [
+        "Ensayos en roca",
+        "Ensayos en Mezcla Asfáltica"
+      ],
+      "descripcion": "Otros tipos de ensayos especializados"
+    }
+  ],
+  "puntos": [
+    "Equipos de última generación",
+    "Personal técnico calificado",
+    "Resultados confiables y precisos",
+    "Acreditación INACAL vigente"
+  ],
+  "detalles": [
+    "Tiempo de entrega: 5-7 días hábiles",
+    "Muestreo in situ disponible",
+    "Asesoría técnica incluida",
+    "Certificados de calidad"
+  ]
+},
+{
+  "slug": "geotecnico",
+  "titulo": "Consultoría Geotécnica",
+  "descripcion": "Servicios de consultoría especializada en geotecnia.",
+  "contenido": "Brindamos asesoría técnica y soluciones a medida para proyectos geotécnicos.",
+  "imagen": "/hero05.jpg",
+  "imagen01": "/hero01.jpg",
+  "titulo01": "Ensayos de Laboratorio",
+  "subtitulo01": "Realizamos análisis especializados con equipos de última generación y personal calificado.",
+  "categorias": [
+    {
+      "titulo": "Ensayos estándares en Suelo",
+      "imagenes": ["/hero01.jpg"],
+      "ensayos": [
+        "Análisis Granulométrico en Suelo (ASTM D6913)",
+        "Límite Liquido y Plástico del Suelo (ASTM D4318)",
+        "Pródico Modificado (ASTM D1537)",
+        "Otros"
+      ],
+      "descripcion": "Ensayos estándar para caracterización de suelos"
+    },
+    {
+      "titulo": "Ensayos en agregados",
+      "imagenes": ["/hero04.jpg", "/hero04.jpg", "/hero04.jpg", "/hero04.jpg"],
+      "ensayos": [
+        "Análisis Granulométrico en Agregados (ASTM C136)",
+        "Partículas planas y alargadas (ASTM 4791)",
+        "Porcentaje de partículas fracturadas (ASTM D3521)",
+        "Abrasión partículas mayores (ASTM C339)",
+        "Abrasión partículas menores (ASTM C131)",
+        "Otros"
+      ],
+      "descripcion": "Ensayos para caracterización de agregados"
+    },
+    {
+      "titulo": "Ensayos especiales en Suelo",
+      "imagenes": ["/hero02.jpg", "/hero02.jpg", "/hero02.jpg", "/hero02.jpg"],
+      "ensayos": [
+        "CBR de suelos compactados (ASTM D1883)",
+        "Compresión no confinada",
+        "Consolidación unidimensional",
+        "Compresión triaxial UU, CU, CD",
+        "Otros"
+      ],
+      "descripcion": "Ensayos especializados para suelos"
+    },
+    {
+      "titulo": "Ensayos en Concreto",
+      "imagenes": ["/hero03.jpg", "/hero03.jpg", "/hero03.jpg", "/hero03.jpg"],
+      "ensayos": [
+        "Compresión de testigos cilíndricos de concreto (ASTM C59)",
+        "Otros"
+      ],
+      "descripcion": "Ensayos para control de calidad de concreto"
+    },
+    {
+      "titulo": "Ensayos químicos",
+      "imagenes": ["/hero04.jpg", "/hero04.jpg", "/hero04.jpg", "/hero04.jpg"],
+      "ensayos": [
+        "Ensayos químicos en suelo, agregados y agua",
+        "Ensayos químicos en suelo y agregados"
+      ],
+      "descripcion": "Análisis químicos especializados"
+    },
+    {
+      "titulo": "Otros ensayos",
+      "imagenes": ["/hero.jpg", "/hero.jpg", "/hero.jpg", "/hero.jpg"],
+      "ensayos": [
+        "Ensayos en roca",
+        "Ensayos en Mezcla Asfáltica"
+      ],
+      "descripcion": "Otros tipos de ensayos especializados"
+    }
+  ],
+  "puntos": [
+    "Equipos de última generación",
+    "Personal técnico calificado",
+    "Resultados confiables y precisos",
+    "Acreditación INACAL vigente"
+  ],
+  "detalles": [
+    "Tiempo de entrega: 5-7 días hábiles",
+    "Muestreo in situ disponible",
+    "Asesoría técnica incluida",
+    "Certificados de calidad"
+  ]
 }
 ]
