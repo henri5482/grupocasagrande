@@ -169,7 +169,7 @@ export default function HeroServicios() {
                   <Button
                     asChild
                     size="lg"
-                    className="mt-4 rounded-lg bg-orange-500 px-8 py-3 text-base font-bold text-white shadow-lg transition-transform duration-300 hover:bg-orange-600 hover:scale-105 active:scale-95"
+                    className="mt-4 rounded-lg bg-orange-500 md:px-8 md:py-3 text-sm md:text-base font-bold text-white shadow-lg transition-transform duration-300 hover:bg-orange-600 hover:scale-105 active:scale-95"
                   >
                     <Link
                       href={activeSlide.buttonLink}
@@ -191,7 +191,7 @@ export default function HeroServicios() {
           <button
             key={index}
             className={`h-2 w-2 rounded-full transition-all duration-300 ${
-              index === slideIndex ? "w-6 bg-orange-500" : "bg-gray-400"
+              index === slideIndex ? "md:w-6 bg-orange-500" : "bg-gray-400"
             }`}
             onClick={() => {
               const newDirection = index > slideIndex ? 1 : -1;

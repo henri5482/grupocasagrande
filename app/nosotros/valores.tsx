@@ -55,7 +55,7 @@ const Valores = () => {
 
   return (
     <>
-      <div className="bg-white py-16 px-4 gap-2 sm:px-6 lg:px-8 ">
+      <div className="bg-white md:py-16 py-6 px-4 gap-2 sm:px-6 lg:px-8 ">
         <div className="max-w-7xl mx-auto">
           {/* Contenedor de Visión y Misión */}
           <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-20 md:py-10  lg:gap-20 items-center mb-16 md:mb-24">
@@ -122,18 +122,7 @@ const Valores = () => {
               </motion.div>
 
               {/* Elemento decorativo animado */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-20 h-20 bg-blue-500 opacity-10 rounded-full"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.1, 0.15, 0.1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+            
             </motion.div>
           </div>
 

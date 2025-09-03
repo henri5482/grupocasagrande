@@ -72,7 +72,7 @@ const buttonVariants = {
 
 const Familia = () => {
   return (
-    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
+    <div className="bg-white md:py-16 pt-16 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20"
@@ -102,18 +102,7 @@ const Familia = () => {
             </motion.div>
             
             {/* Elemento decorativo sutil con animación */}
-            <motion.div 
-              className="absolute -bottom-6 -right-6 w-24 h-24 bg-[#e74c3c] opacity-10 rounded-full"
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.1, 0.15, 0.1],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
+            
           </motion.div>
 
           {/* Sección de texto y contenido (lado derecho) */}
@@ -170,7 +159,7 @@ const Familia = () => {
 
             {/* Botón de acción con animaciones */}
             <motion.button 
-              className='group mt-8 px-8 py-4 bg-[#e74c3c] text-white font-semibold rounded-lg shadow-lg transition-all duration-300'
+              className='group mt-8 px-4 py-4 md:px-8 md:py-4 bg-[#e74c3c] text-white font-semibold rounded-lg shadow-lg transition-all duration-300'
               variants={buttonVariants}
               whileHover="hover"
             >

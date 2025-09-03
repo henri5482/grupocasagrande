@@ -12,7 +12,7 @@ const Trayectoria = () => {
   ];
 
   return (
-    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8 pt-56">
+    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8 md:pt-56">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           {/* Columna izquierda: Título e Imagen */}
