@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView, animate, Variants } from "framer-motion";
 import servicios from "@/app/data/servicios.json";
 import Navbar from "@/app/navbar";
 import Footer from "@/app/footer";
@@ -15,6 +15,105 @@ import { Button } from "@/components/ui/button";
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+interface Stat {
+  id: number;
+  label: string;
+  value: number;
+  suffix: string;
+}
+
+// Componente para animar el conteo de un número
+const CountingNumber: React.FC<{ value: number; duration?: number; suffix?: string; start?: boolean }> = ({
+  value,
+  duration = 2,
+  suffix = '',
+  start = false
+}) => {
+  const nodeRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const node = nodeRef.current;
+    if (node && start) {
+      const controller = animate(0, value, {
+        duration,
+        ease: "easeOut",
+        onUpdate: (latest) => {
+          node.textContent = Math.round(latest).toLocaleString() + suffix;
+        },
+      });
+      return () => controller.stop();
+    }
+  }, [value, duration, suffix, start]);
+
+  return <span ref={nodeRef}>0{suffix}</span>;
+};
+
+// Componente de la sección de números
+const Numeros: React.FC<{ stats: Stat[] }> = ({ stats }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInViewContainer = useInView(containerRef, { once: true, amount: 0.3 });
+
+  const sectionVariants: Variants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.15,
+        when: "beforeChildren",
+      },
+    },
+  };
+
+  const statCardVariants: Variants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 150,
+        damping: 18,
+      },
+    },
+  };
+
+  return (
+    <section className="py-20 sm:py-28 px-6 relative overflow-hidden">
+      <motion.div
+        ref={containerRef}
+        className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-center"
+        variants={sectionVariants}
+        initial="hidden"
+        animate={isInViewContainer ? "visible" : "hidden"}
+      >
+        {stats.map((stat) => (
+          <motion.div
+            key={stat.id}
+            className="flex flex-col items-center justify-center p-6 bg-[#2c3e50] rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+            variants={statCardVariants}
+          >
+            <div
+              className="text-6xl sm:text-7xl font-extrabold mb-4 bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent"
+            >
+              <CountingNumber
+                value={stat.value}
+                suffix={stat.suffix}
+                duration={2}
+                start={isInViewContainer}
+              />
+            </div>
+            <p className="text-sm sm:text-base text-gray-200 uppercase tracking-wide font-medium">
+              {stat.label}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
+    </section>
+  );
+};
+
 
 const ServicioPage = ({ params }: PageProps) => {
   const { slug } = React.use(params);
@@ -199,21 +298,23 @@ const ServicioPage = ({ params }: PageProps) => {
           ))}
         </div>
 
+        {/* --- SECCIÓN DE NÚMEROS AÑADIDA AQUÍ --- */}
+
         {/* Sección de acreditación INACAL */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="bg-blue-50 rounded-lg p-8 border border-blue-200 mb-12"
-        >
+          >
           <h3 className="text-2xl font-bold text-[#2c3e50] text-center mb-6">
             ACREDITACIONES
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[...Array(6)].map((_, index) => (
               <div
-                key={index}
-                className="bg-white rounded-lg p-4 shadow-sm text-center"
+              key={index}
+              className="bg-white rounded-lg p-4 shadow-sm text-center"
               >
                 <div className="text-[#2c3e50] font-bold text-lg mb-2">
                   ACREDITADO ANTE INACAL
@@ -224,6 +325,7 @@ const ServicioPage = ({ params }: PageProps) => {
               </div>
             ))}
           </div>
+            {servicio.numeros && <Numeros stats={servicio.numeros} />}
         </motion.div>
 
         {/* Información de contacto */}
@@ -261,7 +363,7 @@ const ServicioPage = ({ params }: PageProps) => {
                 Solicitar servicio
               </h3>
               <div className="space-y-4">
-                <Button className="w-full bg-[#2c3e50] hover:bg-[#1a242f] text-white py-6 text-lg rounded-xl shadow-md">
+                <Button className="w-full bg-[#2c3e50] hover:bg-[#1a242f]  text-white py-6 text-lg rounded-xl shadow-md">
                   Solicitar cotización
                 </Button>
                 <Button
