@@ -16,26 +16,13 @@ import { Button } from "@/components/ui/button";
 // Datos de ejemplo de los servicios con imágenes
 const servicios = [
   {
-    slug: "geotecnia",
-    titulo: "Geotecnia",
+    slug: "laboratorio",
+    titulo: "laboratorio",
     descripcion:
       "Estudios y soluciones en geotecnia para proyectos seguros y eficientes.",
     imagen: "/hero01.jpg",
   },
-  {
-    slug: "concreto",
-    titulo: "Concreto",
-    descripcion:
-      "Servicios especializados en concreto estructural y de alta resistencia.",
-    imagen: "/servicios/concreto.jpg",
-  },
-  {
-    slug: "pavimentos",
-    titulo: "Pavimentos",
-    descripcion:
-      "Construcción y mantenimiento de pavimentos de calidad.",
-    imagen: "/servicios/pavimentos.jpg",
-  },
+  
 ];
 
 const Servicios = () => {
