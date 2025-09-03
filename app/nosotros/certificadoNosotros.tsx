@@ -31,7 +31,7 @@ const CertificadoNosotros = () => {
               className="w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
             >
               {/* Sección de Texto */}
-              <div className="w-full lg:w-1/2 text-center lg:text-left">
+              <div className="w-full md:lg:w-1/2 text-center lg:text-left">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
