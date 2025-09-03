@@ -107,7 +107,7 @@ export default function HeroServicios() {
   };
 
   return (
-    <main className="relative flex h-[70vh] md:h-[80vh] w-full flex-col items-center justify-center overflow-hidden bg-black px-2">
+    <main className="relative flex h-[70vh] md:h-[70vh] w-full flex-col items-center justify-center overflow-hidden bg-black px-2">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={page}
