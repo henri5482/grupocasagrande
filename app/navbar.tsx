@@ -44,7 +44,7 @@ const navLinks: NavLink[] = [
   { href: "/servicios", label: "Servicios" },
   { href: "/proyectos", label: "Proyectos" },
   { href: "/about", label: "Blog" },
-  { href: "/docentes", label: "Contacto" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 const socialLinks: SocialLink[] = [

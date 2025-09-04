@@ -8,7 +8,7 @@ import proyectos from "@/app/data/proyectos.json";
 
 const ProyectosPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className=" bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
@@ -112,20 +112,7 @@ const ProyectosPage = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-gradient-to-r from-[#1b4b52] to-[#2c3e50] text-white py-20 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          ¿Quieres un proyecto como este?
-        </h2>
-        <p className="mb-8 text-lg opacity-90">
-          Contáctanos y llevemos tu idea al siguiente nivel.
-        </p>
-        <Link
-          href="/contacto"
-          className="px-6 py-3 bg-white text-[#1b4b52] font-bold rounded-full shadow-md hover:shadow-lg transition"
-        >
-          Contáctanos
-        </Link>
-      </section>
+      
     </div>
   );
 };
