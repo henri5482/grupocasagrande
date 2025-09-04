@@ -10,9 +10,9 @@ import SocialStats from "@/app/blog/SocialStats";
 import Newsletter from "@/app/blog/Newsletter";
 import TrendingPosts from "@/app/blog/TrendingPosts";
 
-const allBlogs: Blog[] = blogsData.map(blog => ({
+const allBlogs: Blog[] = blogsData.map((blog) => ({
   ...blog,
-  esPopular: blog.esPopular ?? false,
+  esPopular: blog.esPopular !== undefined ? blog.esPopular : false,
 }));
 const categories: Category[] = categoriesData;
 
@@ -25,20 +25,23 @@ export default function BlogPage() {
     setMounted(true);
   }, []);
 
+  // Filtrar blogs según categoría y búsqueda
   const filteredBlogs = allBlogs.filter(blog => {
-    const matchesCategory =
-      selectedCategory === "todas" ||
+    const matchesCategory = selectedCategory === "todas" || 
       blog.categoria.toLowerCase() === selectedCategory.toLowerCase();
-    const matchesSearch =
-      blog.titulo.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    const matchesSearch = blog.titulo.toLowerCase().includes(searchQuery.toLowerCase()) ||
       blog.contenido.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
+  // Artículos populares (con esPopular: true)
   const popularPosts = allBlogs.filter(blog => blog.esPopular);
-  const featuredBlog = filteredBlogs[0] || null;
+
+  // Artículo destacado (el más reciente)
+  const featuredBlog = filteredBlogs.length > 0 ? filteredBlogs[0] : null;
   const otherBlogs = filteredBlogs.slice(1);
 
+  // Evitar renderizado hasta que el componente esté montado en el cliente
   if (!mounted) {
     return (
       <div className="min-h-screen bg-slate-50 pt-28">
