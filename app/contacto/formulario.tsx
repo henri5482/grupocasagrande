@@ -12,7 +12,7 @@ const Formulario = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-start space-x-4 mb-10 md:mb-16 lg:mb-20">
         <div className="flex-shrink-0">
           <h1 className="text-4xl font-bold text-gray-800">Contacto</h1>
-          <p className="text-gray-600 mt-1 text-lg">Tu mensaje es importante para nosotros.</p>
+          <p className="text-gray-600 mt-1 md:text-lg">Tu mensaje es importante para nosotros.</p>
         </div>
         <div className="hidden md:block flex-grow h-1 bg-[#fa5524] rounded-full"></div>
       </div>

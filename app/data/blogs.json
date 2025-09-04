@@ -1,0 +1,31 @@
+[
+  {
+    "slug": "casa-b-artemisa",
+    "titulo": "Casa B en Artemisa: Integración con la naturaleza",
+    "categoria": "Tendencias",
+    "imagen": "/hero05.jpg",
+    "fecha": "2025-09-04",
+    "contenido": "Al oeste de La Habana, en el municipio cubano de Artemisa, se alza esta vivienda construida sobre un acantilado. La edificación conserva las dimensiones y elementos esenciales de una antigua casa preexistente, y el diseño se centra en una integración sutil con el entorno natural...",
+    "relacionados": ["geotecnia-en-peru"],
+    "esPopular": true
+  },
+  {
+    "slug": "geotecnia-en-peru",
+    "titulo": "La Geotecnia en Perú: Retos y Oportunidades",
+    "categoria": "Formación",
+    "imagen": "/hero04.jpg",
+    "fecha": "2025-09-01",
+    "contenido": "El sector de la geotecnia en Perú enfrenta desafíos únicos debido a su compleja geografía. Sin embargo, las oportunidades para la innovación y el desarrollo son inmensas, impulsadas por proyectos de infraestructura...",
+    "relacionados": ["pavimento-moderno", "construccion-sostenible"]
+  },
+  {
+    "slug": "construccion-sostenible",
+    "titulo": "Construcción Sostenible: Materiales y Técnicas",
+    "categoria": "Tendencias",
+    "imagen": "/hero03.jpg",
+    "fecha": "2025-08-20",
+    "contenido": "La construcción sostenible busca reducir el impacto ambiental y optimizar recursos mediante el uso de materiales ecológicos y técnicas de construcción innovadoras. Es un campo en constante evolución...",
+    "relacionados": ["geotecnia-en-peru"],
+    "esPopular": true
+  }
+]

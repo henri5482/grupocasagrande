@@ -43,7 +43,7 @@ const navLinks: NavLink[] = [
   { href: "/nosotros", label: "Nosotros" },
   { href: "/servicios", label: "Servicios" },
   { href: "/proyectos", label: "Proyectos" },
-  { href: "/about", label: "Blog" },
+  { href: "/blog", label: "Blog" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -341,7 +341,7 @@ const Navbar = () => {
                   </motion.div>
                 ))}
               </nav>
-              <div className="space-y-4 border-t p-4 text-sm">
+              <div className="space-y-4 border-t p-4 pb-20 text-sm">
                 {/* Nuevo botón de cotización en el menú móvil */}
                 <motion.div
                   variants={mobileMenuItemVariants}
