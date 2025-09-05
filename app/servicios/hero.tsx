@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion, Variants, Transition } from "framer-motion";
@@ -20,16 +20,14 @@ const slidesData: {
     id: 1,
     title: "NUESTROS SERVICIOS",
     subtitle:
-      "Nuestra prioridad es la calidad y la formalidad en cada proyecto. Nos comprometemos con la excelencia y la mejora continua.",
+      "Casagrande ofrece soluciones de ingeniería civil, geotecnia y laboratorio de materiales, asegurando calidad y confiabilidad en cada proyecto.",
     imageSrc: "/hero01.jpg",
-    buttonText: "Ver Brouchure",
-    buttonLink: "/",
-    
+    buttonText: "Ver Brochure",
+    buttonLink: "/brochure.pdf",
   },
-
 ];
 
-// --- Variantes de Animación (Completamente tipadas) ---
+// --- Variantes de Animación ---
 const slideVariants: Variants = {
   enter: (direction: number) => ({
     x: direction > 0 ? "100%" : "-100%",
@@ -38,43 +36,23 @@ const slideVariants: Variants = {
   center: {
     x: 0,
     opacity: 1,
-    transition: {
-      type: "tween" as const,
-      duration: 0.7,
-      ease: [0.56, 0.03, 0.12, 1.04] as const,
-    } as Transition,
+    transition: { type: "tween" as const, duration: 0.7, ease: [0.56, 0.03, 0.12, 1.04] as const },
   },
   exit: (direction: number) => ({
     x: direction < 0 ? "100%" : "-100%",
     opacity: 0,
-    transition: {
-      type: "tween" as const,
-      duration: 0.7,
-      ease: [0.56, 0.03, 0.12, 1.04] as const,
-    } as Transition,
+    transition: { type: "tween" as const, duration: 0.7, ease: [0.56, 0.03, 0.12, 1.04] as const },
   }),
 };
 
 const contentVariants: Variants = {
   initial: { opacity: 0, y: 20 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    } as Transition,
-  },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5, staggerChildren: 0.2, delayChildren: 0.3 } as Transition },
 };
 
 const itemVariants: Variants = {
   initial: { opacity: 0, y: 20 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 } as Transition,
-  },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } as Transition },
 };
 
 export default function HeroServicios() {
@@ -93,10 +71,7 @@ export default function HeroServicios() {
     return () => clearInterval(interval);
   }, [paginate]);
 
-  const onDragEnd = (
-    _e: MouseEvent | TouchEvent | PointerEvent,
-    { offset, velocity }: { offset: { x: number }; velocity: { x: number } }
-  ) => {
+  const onDragEnd = (_e: MouseEvent | TouchEvent | PointerEvent, { offset, velocity }: { offset: { x: number }; velocity: { x: number } }) => {
     const swipeConfidenceThreshold = 10000;
     const swipe = Math.abs(offset.x) * velocity.x;
     if (swipe < -swipeConfidenceThreshold) {
@@ -168,7 +143,7 @@ export default function HeroServicios() {
                   <Button
                     asChild
                     size="lg"
-                    className="mt-4 rounded-lg bg-orange-500 px-8 py-3 text-base font-bold text-white shadow-lg transition-transform duration-300 hover:bg-orange-600 hover:scale-105 active:scale-95"
+                    className="mt-4 rounded-lg bg-[#1b4772] px-8 py-3 text-base font-bold text-white shadow-lg transition-transform duration-300 hover:bg-[#1b2a3a] hover:scale-105 active:scale-95"
                   >
                     <Link
                       href={activeSlide.buttonLink}
@@ -190,7 +165,7 @@ export default function HeroServicios() {
           <button
             key={index}
             className={`h-2 w-2 rounded-full transition-all duration-300 ${
-              index === slideIndex ? "w-6 bg-orange-500" : "bg-gray-400"
+              index === slideIndex ? "w-6 bg-[#2c3e50]" : "bg-gray-400"
             }`}
             onClick={() => {
               const newDirection = index > slideIndex ? 1 : -1;

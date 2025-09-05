@@ -139,7 +139,7 @@ const ServicioPage = ({ params }: PageProps) => {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="relative bg-gray-900">
+      <div className="relative bg-gray-900 pt-12 md:pt-20">
         <div className="relative h-64 md:h-80">
           <Image
             src={servicio.imagen}

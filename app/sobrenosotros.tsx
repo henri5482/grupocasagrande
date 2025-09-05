@@ -11,30 +11,26 @@ const Sobrenosotros = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
           
-          {/* Sección de la imagen (aparece primero en el código) */}
+          {/* Imagen */}
           <div className="relative w-full lg:w-1/2 rounded-3xl overflow-hidden shadow-2xl">
             <img
               src={imageSrc}
-              alt="Equipo de Ingeotecon Contratistas y Ejecutores EIRL"
+              alt="Equipo de Casagrande"
               className="object-cover w-full h-full"
             />
           </div>
 
-          {/* Sección de texto y contenido (aparece segundo en el código) */}
+          {/* Texto y contenido */}
           <div className="w-full lg:w-1/2">
             <h2 className="text-4xl font-extrabold text-[#2c3e50] tracking-tight mb-4">
               Sobre nosotros
             </h2>
             <h3 className="text-3xl font-bold text-[#2c3e50] mb-6">
-              Ingeotecon Contratistas y Ejecutores EIRL
+              Casagrande S.A.C.
             </h3>
             
             <p className="text-gray-600 leading-relaxed mb-6">
-              Somos una empresa peruana que ofrece servicios de consultoría y
-              ensayos en laboratorio al más alto nivel profesional y de
-              experiencia, en el campo de la ingeniería geotécnica, geofísica,
-              sondeos, diamantinos, concreto, pavimentos, ensayos de
-              laboratorio, ensayos de campo, medio ambiente, entre otros.
+              Casagrande es una empresa consultora de ingeniería civil especializada en estudios técnicos y de calidad que se realizan antes, durante y después de una obra de construcción. Garantizamos que todo lo que se construye tenga bases seguras, materiales adecuados y estudios previos confiables.
             </p>
 
             {/* Certificaciones */}
@@ -42,25 +38,24 @@ const Sobrenosotros = () => {
               <div className="flex items-start gap-3">
                 <FaAward className="text-[#e74c3c] text-2xl flex-shrink-0 mt-1" />
                 <p className="text-gray-700">
-                  <span className="font-semibold text-gray-800">Empresa Certificada con la Norma ISO 9001 - 2015</span>{" "}
-                  Gestión de la Calidad.
+                  <span className="font-semibold text-gray-800">ISO 9001 – Sistema de Gestión de Calidad:</span> garantiza procesos claros y eficientes, asegurando confiabilidad en nuestros informes técnicos.
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <LuMapPin className="text-[#e74c3c] text-2xl flex-shrink-0 mt-1" />
                 <p className="text-gray-700">
-                  <span className="font-semibold text-gray-800">LABORATORIO DE ENSAYO ACREDITADO</span>{" "}
-                  ante el NTP-ISO/IEC 17025:2017 por el INACAL
+                  <span className="font-semibold text-gray-800">ISO 37001 – Sistema de Gestión Antisoborno:</span> protege la transparencia y ética en contratos y supervisiones.
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <FaAward className="text-[#e74c3c] text-2xl flex-shrink-0 mt-1" />
                 <p className="text-gray-700">
-                  <span className="font-semibold text-gray-800">Empresa Certificada con la Norma ISO 45001 - 2018</span>{" "}
-                  Gestión de la Salud y Seguridad en el Trabajo.
+                  <span className="font-semibold text-gray-800">ISO 14001 – Sistema de Gestión Ambiental:</span> asegura que todos nuestros estudios y ensayos respeten el medio ambiente y cumplan regulaciones.
                 </p>
               </div>
             </div>
+
+      
 
             {/* Botón de acción */}
             <button className='px-6 py-3 bg-[#e74c3c] text-white font-semibold rounded-lg shadow-md hover:bg-[#c0392b] transition duration-200'>

@@ -13,11 +13,12 @@ interface NavItem {
 
 // Define los datos para los elementos de navegación
 const serviciosNav: NavItem[] = [
-  { slug: "geotecnico", titulo: "Laboratorio de Ensayo de Materiales" },
-  { slug: "consultoria", titulo: "Control de Calidad en Obras Civiles" },
-  { slug: "laboratorio", titulo: "Estudios Geotécnicos" },
-  { slug: "muros", titulo: "Implementación de Laboratorio en Obra" },
-  
+  { slug: "geologia", titulo: "Servicios de Geología" },
+  { slug: "geotecnia", titulo: "Servicios de Geotecnia" },
+  { slug: "laboratorio-geotecnico", titulo: "Laboratorio Geotécnico" },
+  { slug: "geofisica", titulo: "Servicios de Geofísica" },
+  { slug: "geomecanica", titulo: "Servicios de Geomecánica" },
+  { slug: "hidrogeologia", titulo: "Servicios de Hidrogeología" }
 ];
 
 const ServicioNav = () => {
@@ -48,20 +49,32 @@ const ServicioNav = () => {
                 `}
               >
                 <div className="flex items-start">
-                  <div className={`
+                  <div
+                    className={`
                     flex-shrink-0 w-3 h-3 rounded-full mt-1 mr-3 transition-all duration-300
-                    ${isActive ? "bg-white" : "bg-[#2c3e50] group-hover:bg-blue-600"}
-                  `}></div>
+                    ${
+                      isActive
+                        ? "bg-white"
+                        : "bg-[#2c3e50] group-hover:bg-blue-600"
+                    }
+                  `}
+                  ></div>
                   <span className="text-sm font-medium leading-tight">
                     {servicio.titulo}
                   </span>
                 </div>
 
                 {/* Efecto de fondo sutil */}
-                <div className={`
+                <div
+                  className={`
                   absolute inset-0 opacity-5 transition-all duration-300
-                  ${isActive ? "bg-white" : "bg-blue-500 group-hover:bg-blue-600"}
-                `}></div>
+                  ${
+                    isActive
+                      ? "bg-white"
+                      : "bg-blue-500 group-hover:bg-blue-600"
+                  }
+                `}
+                ></div>
               </Link>
             );
           })}

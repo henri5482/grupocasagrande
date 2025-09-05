@@ -77,11 +77,11 @@ const Numeros = () => {
         {stats.map((stat) => (
           <motion.div
             key={stat.id}
-            className="flex flex-col items-center justify-center p-6 bg-[#34495e] rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+            className="flex flex-col items-center justify-center p-6 bg-[#1b4772] rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
             variants={statCardVariants}
           >
             <div
-              className="text-6xl sm:text-7xl font-extrabold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+              className="text-6xl sm:text-7xl font-extrabold mb-4 bg-gradient-to-r text-white bg-clip-text "
             >
               <CountingNumber 
                 value={stat.value} 
@@ -90,7 +90,7 @@ const Numeros = () => {
                 start={isInViewContainer} 
               />
             </div>
-            <p className="text-sm sm:text-base text-gray-200 uppercase tracking-wide font-medium">
+            <p className="text-sm sm:text-base text-white uppercase tracking-wide font-medium">
               {stat.label}
             </p>
           </motion.div>

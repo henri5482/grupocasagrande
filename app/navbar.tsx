@@ -1,4 +1,5 @@
 "use client";
+
 import {
   AnimatePresence,
   motion,
@@ -7,9 +8,8 @@ import {
   Variants,
 } from "framer-motion";
 
-// ✅ Importamos los iconos desde react-icons/lu.
 import { LuMenu, LuX, LuMapPin } from "react-icons/lu";
-import { IconType } from "react-icons"; // 💡 Importamos el tipo IconType para los iconos.
+import { IconType } from "react-icons";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -20,7 +20,6 @@ import { MdOutgoingMail } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 
 // --- Data Configuration ---
-// 💡 Actualizamos los tipos para usar IconType.
 interface NavLink {
   href: string;
   label: string;
@@ -96,7 +95,7 @@ const SocialLinks = ({ className = "text-white" }: { className?: string }) => (
 );
 
 const TopBar = () => (
-  <div className="hidden bg-[#2c3e50] text-white md:block">
+  <div className="hidden bg-[#1b4772] text-white md:block">
     <div className="container mx-auto flex h-10 items-center justify-between px-4">
       <div className="flex items-center gap-6">
         {contactInfo.map((item) => (
@@ -115,7 +114,7 @@ const DesktopMenu = ({
   pathname: string;
   hoverVariants: Variants;
 }) => (
-  <nav className="hidden items-center md:flex">
+  <nav className="hidden items-center md:flex lg:flex">
     {navLinks.map((link) => (
       <motion.div
         key={link.href}
@@ -153,7 +152,7 @@ const MobileMenuButton = ({
   toggle: () => void;
 }) => (
   <motion.button
-    className="z-[100] rounded-md p-2 text-[#373737] transition-transform duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-[#373737] md:hidden "
+    className="z-[100] rounded-md p-2 text-[#373737] transition-transform duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-[#373737] md:hidden"
     onClick={toggle}
     aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
     whileTap={{ scale: 0.9 }}
@@ -179,7 +178,7 @@ const Navbar = () => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const [prevScrollY, setPrevScrollY] = useState(0);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -189,6 +188,10 @@ const Navbar = () => {
     setIsVisible(isAtTop || isScrollingUp);
     setPrevScrollY(latest);
   });
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -205,9 +208,14 @@ const Navbar = () => {
   const navbarVariants: Variants = {
     visible: {
       y: 0,
+      opacity: 1,
       transition: { type: "spring", stiffness: 120, damping: 20 },
     },
-    hidden: { y: "-100%", transition: { duration: 0.3, ease: "easeInOut" } },
+    hidden: {
+      y: "-100%",
+      opacity: 0,
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
   };
 
   const mobileMenuContainerVariants: Variants = {
@@ -252,10 +260,10 @@ const Navbar = () => {
         className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm backdrop-blur-md"
         variants={navbarVariants}
         animate={isVisible ? "visible" : "hidden"}
-        initial="visible"
+        initial="hidden"
       >
         <TopBar />
-        <div className="container mx-auto flex h-16 items-center justify-between px-4 md:h-20">
+        <div className="  max-2xl:max-w-[1200px]  container mx-auto flex h-16 items-center justify-between  md:h-20">
           <Link href="/" className="flex items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -275,12 +283,20 @@ const Navbar = () => {
           {/* Menú de escritorio en el centro */}
           <DesktopMenu pathname={pathname} hoverVariants={linkHoverVariants} />
 
-          {/* Nuevo botón "Cotiza" a la derecha */}
-          <div className="hidden md:flex items-center">
+          {/* Botones de acción en el escritorio */}
+          <div className="hidden items-center space-x-4 md:flex lg:flex">
+            <Link href="/asesoria-tecnica">
+              <Button
+                size="lg"
+                className="bg-white  border cursor-pointer  border-[#1b4772] text-[#1b4772] font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out hover:bg-[#1b4772] hover:text-white"
+              >
+                ASESORÍA TÉCNICA
+              </Button>
+            </Link>
             <Link href="/cotiza">
               <Button
                 size="lg"
-                className="bg-[#2c3e50] hover:bg-[#373737] text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-colors duration-300"
+                className="bg-[#1b4772] cursor-pointer text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out hover:bg-[#373737]"
               >
                 ¡COTIZAR AHORA!
               </Button>
@@ -342,21 +358,31 @@ const Navbar = () => {
                 ))}
               </nav>
               <div className="space-y-4 border-t p-4 pb-20 text-sm">
-                {/* Nuevo botón de cotización en el menú móvil */}
+                {/* Botones de acción en el menú móvil */}
                 <motion.div
                   variants={mobileMenuItemVariants}
-                  className="w-full"
+                  className="w-full space-y-2 text-4xl"
                 >
+                  <Link href="/asesoria-tecnica">
+                    <Button
+                      size="lg"
+                      className="w-full bg-white border border-[#1b4772] text-[#1b4772] font-semibold rounded-lg transition duration-300 ease-in-out cursor-pointer hover:bg-[#1b4772] hover:text-white"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      ASESORÍA TÉCNICA
+                    </Button>
+                  </Link>
                   <Link href="/cotiza">
                     <Button
                       size="lg"
-                      className="w-full bg-[#2c3e50] hover:bg-[#373737] text-white font-semibold rounded-lg shadow-md"
+                      className="w-full bg-[#1b4772] cursor-pointer text-white font-semibold rounded-lg shadow-md transition duration-300 ease-in-out hover:bg-[#373737]"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       ¡COTIZAR AHORA!
                     </Button>
                   </Link>
                 </motion.div>
+
                 <div className="space-y-3">
                   {contactInfo.map((item) => (
                     <a

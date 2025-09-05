@@ -17,41 +17,41 @@ const slidesData: {
   buttonLink: string;
   buttonIcon?: ReactNode;
 }[] = [
-  {
+ {
     id: 1,
     title: "BIENVENIDO A CASAGRANDE",
-    subtitle: "Acreditado ante el INACAL con la ISO/IEC 17025:2017",
+    subtitle: "Acreditados ante el INACAL con ISO/IEC 17025:2017",
     imageSrc: "/hero01.jpg",
-    buttonText: "989 900 609",
+    buttonText: "Llámanos: 989 900 609",
     buttonLink: "tel:989900609",
     buttonIcon: <LuPhone className="h-5 w-5" />,
   },
   {
     id: 2,
-    title: "ESTUDIOS DE SUELOS ESPECIALIZADOS",
+    title: "ESTUDIOS GEOTÉCNICOS Y DE SUELO",
     subtitle:
-      "Garantizamos la seguridad y estabilidad de tu proyecto con análisis precisos.",
+      "Garantizamos la seguridad y estabilidad de tu proyecto con análisis precisos de suelo, rocas, agua y materiales.",
     imageSrc: "/hero02.jpg",
-    buttonText: "Nuestros Servicios",
+    buttonText: "Conoce nuestros servicios",
     buttonLink: "/servicios",
   },
   {
     id: 3,
-    title: "CONSULTORÍA Y DISEÑO GEOTÉCNICO",
+    title: "CONSULTORÍA EN CIMENTACIONES Y TALUDES",
     subtitle:
-      "Soluciones innovadoras para cimentaciones, taludes y obras civiles.",
+      "Diseños recomendados para cimentaciones, muros de contención y pavimentos, asegurando la correcta ejecución de la obra.",
     imageSrc: "/hero03.jpg",
     buttonText: "Ver Proyectos",
     buttonLink: "/proyectos",
   },
   {
     id: 4,
-    title: "CONSULTORÍA Y DISEÑO GEOTÉCNICO",
+    title: "LABORATORIO Y CONTROL DE CALIDAD",
     subtitle:
-      "Soluciones innovadoras para cimentaciones, taludes y obras civiles.",
+      "Pruebas en campo y laboratorio de suelos, rocas, concreto, asfalto y agua para garantizar resultados confiables.",
     imageSrc: "/hero04.jpg",
-    buttonText: "Ver Proyectos",
-    buttonLink: "/proyectos",
+    buttonText: "Más Información",
+    buttonLink: "/nosotros",
   },
 ];
 

@@ -26,9 +26,9 @@ const Footer = () => {
     {
       title: "Soporte al cliente",
       links: [
-        { name: "Política de privacidad", href: "/politicadeprivacidad" },
-        { name: "Términos y condiciones", href: "/terminosycondiciones" },
-        { name: "haste premium", href: "https://wa.me/51927545815?text=Hola%20quiero%hacerme%20vip" },
+        { name: "(+51) 981 696 426", href: "tel:+51981696426" },
+        { name: "laboratorio@geofal.com.pe", href: "/terminosycondiciones" },
+        { name: "Redes sociales", href: "https://wa.me/51927545815?text=Hola%20quiero%hacerme%20vip" },
       ],
     },
   ];
@@ -37,7 +37,7 @@ const Footer = () => {
   const productLinks = [
     { name: "Recursos gratis", href: "#" },
     { name: "Cursos gratis", href: "#" },
-    { name: "Blog", href: "#" },
+    { name: "Blog", href: "/blog" },
     { name: "Comunidad", href: "#" },
   ];
 
@@ -94,7 +94,7 @@ const Footer = () => {
           </Link>
           <button
             onClick={scrollToTop}
-            className="flex items-center text-sm font-medium text-[#2c3e50] hover:text-red-950 transition-colors group"
+            className="flex items-center text-sm font-medium text-[#1b4772] hover:text-red-950 transition-colors group"
             aria-label="Volver arriba"
           >
             Volver arriba
@@ -132,7 +132,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-y-10 lg:gap-x-12 mb-8 sm:mb-12">
           {/* Section: JEDteam (About) */}
           <div className="py-2">
-            <h2 className="text-lg font-bold mb-4 text-[#2c3e50]">
+            <h2 className="text-lg font-bold mb-4 text-[#1b4772]">
               Club de Ingenieros
             </h2>
             <nav>
@@ -143,7 +143,7 @@ const Footer = () => {
                       href={link.href}
                       className="text-gray-700 hover:text-red-600 hover:underline transition-colors flex items-center text-sm group"
                     >
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2c3e50] mr-2 flex-shrink-0 group-hover:bg-[#2c3e50] transition-colors"></span>
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#1b4772] mr-2 flex-shrink-0 group-hover:bg-[#1b4772] transition-colors"></span>
                       {link.name}
                     </Link>
                   </li>
@@ -154,7 +154,7 @@ const Footer = () => {
 
           {/* Section: Conecta con EDteam */}
           <div className="py-2">
-            <h2 className="text-lg font-bold mb-4 text-[#2c3e50]">
+            <h2 className="text-lg font-bold mb-4 text-[#1b4772]">
               Conecta con Nosotros
             </h2>
             <nav className="space-y-4 sm:space-y-6">
@@ -170,7 +170,7 @@ const Footer = () => {
                           href={link.href}
                           className="text-gray-700 hover:text-red-600 hover:underline transition-colors flex items-center text-sm group"
                         >
-                          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2c3e50] mr-2 flex-shrink-0 group-hover:bg-red-600 transition-colors"></span>
+                          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#1b4772] mr-2 flex-shrink-0 group-hover:bg-red-600 transition-colors"></span>
                           {link.name}
                         </Link>
                       </li>
@@ -183,7 +183,7 @@ const Footer = () => {
 
           {/* Section: Nuestros productos */}
           <div className="py-2">
-            <h2 className="text-lg font-bold mb-4 text-[#2c3e50]">
+            <h2 className="text-lg font-bold mb-4 text-[#1b4772]">
               Nuestros productos
             </h2>
             <nav>
@@ -194,7 +194,7 @@ const Footer = () => {
                       href={link.href}
                       className="text-gray-700 hover:text-red-600 hover:underline transition-colors flex items-center text-sm group"
                     >
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#2c3e50] mr-2 flex-shrink-0 group-hover:bg-red-500 transition-colors"></span>
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#1b4772] mr-2 flex-shrink-0 group-hover:bg-red-500 transition-colors"></span>
                       {link.name}
                     </Link>
                   </li>
@@ -214,7 +214,7 @@ const Footer = () => {
                 <Link
                   key={social.name}
                   href={social.href}
-                  className="text-[#2c3e50] hover:text-[#0d70af] transition-colors p-2 rounded-full hover:scale-110 transform"
+                  className="text-[#1b4772] hover:text-[#0d70af] transition-colors p-2 rounded-full hover:scale-110 transform"
                   aria-label={social.name}
                 >
                   <social.icon size={22} />
@@ -230,7 +230,7 @@ const Footer = () => {
             <Link
               key={social.name}
               href={social.href}
-              className="text-[#2c3e50] hover:text-[#0d70af] transition-colors p-2 sm:p-3 rounded-full hover:scale-110 transform "
+              className="text-[#1b4772] hover:text-[#0d70af] transition-colors p-2 sm:p-3 rounded-full hover:scale-110 transform "
               aria-label={social.name}
             >
               <social.icon size={24} className="w-6 h-6" />

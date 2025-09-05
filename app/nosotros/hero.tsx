@@ -1,13 +1,11 @@
-"use client";
-
+'use client';
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion, Variants, Transition } from "framer-motion";
-import { LuPhone } from "react-icons/lu";
 import Link from "next/link";
 import { ReactNode, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 
-// --- DATOS DE LOS SLIDES ---
+// --- SLIDE CON NUEVO TEXTO PROFESIONAL ---
 const slidesData: {
   id: number;
   title: string;
@@ -19,63 +17,30 @@ const slidesData: {
 }[] = [
   {
     id: 1,
-    title: "SOBRE NOSOTROS",
-    subtitle:
-      "Nuestra prioridad es la calidad y la formalidad en cada proyecto. Nos comprometemos con la excelencia y la mejora continua.",
+    title: "Aseguramiento de calidad y confiabilidad de resultados",
+    subtitle: "",
     imageSrc: "/hero01.jpg",
     buttonText: "",
-    buttonLink: "",
-    buttonIcon: "",
+    buttonLink: "/servicios",
+    buttonIcon: null,
   },
-
 ];
 
-// --- Variantes de Animación (Completamente tipadas) ---
+// --- Variantes de Animación ---
 const slideVariants: Variants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? "100%" : "-100%",
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: "tween" as const,
-      duration: 0.7,
-      ease: [0.56, 0.03, 0.12, 1.04] as const,
-    } as Transition,
-  },
-  exit: (direction: number) => ({
-    x: direction < 0 ? "100%" : "-100%",
-    opacity: 0,
-    transition: {
-      type: "tween" as const,
-      duration: 0.7,
-      ease: [0.56, 0.03, 0.12, 1.04] as const,
-    } as Transition,
-  }),
+  enter: (direction: number) => ({ x: direction > 0 ? "100%" : "-100%", opacity: 0 }),
+  center: { x: 0, opacity: 1, transition: { type: "tween", duration: 0.7, ease: [0.56, 0.03, 0.12, 1.04] } },
+  exit: (direction: number) => ({ x: direction < 0 ? "100%" : "-100%", opacity: 0, transition: { type: "tween", duration: 0.7, ease: [0.56, 0.03, 0.12, 1.04] } }),
 };
 
 const contentVariants: Variants = {
   initial: { opacity: 0, y: 20 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    } as Transition,
-  },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5, staggerChildren: 0.2, delayChildren: 0.3 } },
 };
 
 const itemVariants: Variants = {
   initial: { opacity: 0, y: 20 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 } as Transition,
-  },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 export default function HeroServicios() {
@@ -83,14 +48,10 @@ export default function HeroServicios() {
   const slideIndex = Math.abs(page % slidesData.length);
   const activeSlide = slidesData[slideIndex];
 
-  const paginate = useCallback((newDirection: number) => {
-    setPage(([currentPage]) => [currentPage + newDirection, newDirection]);
-  }, []);
+  const paginate = useCallback((newDirection: number) => setPage(([currentPage]) => [currentPage + newDirection, newDirection]), []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      paginate(1);
-    }, 70000);
+    const interval = setInterval(() => paginate(1), 70000);
     return () => clearInterval(interval);
   }, [paginate]);
 
@@ -100,11 +61,8 @@ export default function HeroServicios() {
   ) => {
     const swipeConfidenceThreshold = 10000;
     const swipe = Math.abs(offset.x) * velocity.x;
-    if (swipe < -swipeConfidenceThreshold) {
-      paginate(1);
-    } else if (swipe > swipeConfidenceThreshold) {
-      paginate(-1);
-    }
+    if (swipe < -swipeConfidenceThreshold) paginate(1);
+    else if (swipe > swipeConfidenceThreshold) paginate(-1);
   };
 
   return (
@@ -118,13 +76,7 @@ export default function HeroServicios() {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: "easeInOut" }}
         >
-          <Image
-            src={activeSlide.imageSrc}
-            alt={activeSlide.title}
-            fill
-            className="object-cover object-center"
-            priority
-          />
+          <Image src={activeSlide.imageSrc} alt={activeSlide.title} fill className="object-cover object-center" priority />
           <div className="absolute inset-0 bg-black/50" />
         </motion.div>
       </AnimatePresence>
@@ -152,29 +104,19 @@ export default function HeroServicios() {
             >
               <motion.h1
                 variants={itemVariants}
-                className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-lg"
+                className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white drop-shadow-lg leading-snug"
               >
                 {activeSlide.title}
               </motion.h1>
-
-              <motion.p
-                variants={itemVariants}
-                className="text-base font-medium leading-relaxed text-gray-200 sm:text-lg lg:text-xl drop-shadow-md"
-              >
-                {activeSlide.subtitle}
-              </motion.p>
 
               {activeSlide.buttonText && activeSlide.buttonLink && (
                 <motion.div variants={itemVariants}>
                   <Button
                     asChild
                     size="lg"
-                    className="mt-4 rounded-lg bg-orange-500 md:px-8 md:py-3 text-sm md:text-base font-bold text-white shadow-lg transition-transform duration-300 hover:bg-orange-600 hover:scale-105 active:scale-95"
+                    className="mt-6 rounded-lg bg-[#2c3e50] md:px-8 md:py-3 text-sm md:text-base font-bold text-white shadow-lg transition-transform duration-300 hover:bg-[#1b2a3b] hover:scale-105 active:scale-95"
                   >
-                    <Link
-                      href={activeSlide.buttonLink}
-                      className="flex items-center gap-2"
-                    >
+                    <Link href={activeSlide.buttonLink} className="flex items-center gap-2">
                       {activeSlide.buttonIcon}
                       {activeSlide.buttonText}
                     </Link>
@@ -190,9 +132,7 @@ export default function HeroServicios() {
         {slidesData.map((_slide, index) => (
           <button
             key={index}
-            className={`h-2 w-2 rounded-full transition-all duration-300 ${
-              index === slideIndex ? "md:w-6 bg-orange-500" : "bg-gray-400"
-            }`}
+            className={`h-2 w-2 rounded-full transition-all duration-300 ${index === slideIndex ? "md:w-6 bg-[#2c3e50]" : "bg-gray-400"}`}
             onClick={() => {
               const newDirection = index > slideIndex ? 1 : -1;
               setPage([index, newDirection]);

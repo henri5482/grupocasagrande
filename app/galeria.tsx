@@ -1,45 +1,49 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
-import { FaArrowRight } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import React from "react";
+import Image from "next/image";
+import { FaArrowRight } from "react-icons/fa";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
-// --- DATOS DE LOS SERVICIOS ---
 const serviciosData = [
   {
     id: 1,
     imageSrc: "/hero01.jpg",
     title: "Implementación de Laboratorio en Obra",
-    description: "Servicios especializados de laboratorio en sitio para control de calidad durante la construcción.",
+    description:
+      "Ofrecemos servicios especializados de laboratorio en sitio para control de calidad durante la construcción, garantizando precisión en cada ensayo y supervisión técnica de las obras.",
   },
   {
     id: 2,
     imageSrc: "/hero02.jpg",
     title: "Estudios Geotécnicos",
-    description: "Análisis detallados del suelo y roca para cimentaciones y diseño de estructuras.",
+    description:
+      "Realizamos análisis completos del suelo y roca para cimentaciones, pavimentos y estructuras, utilizando técnicas de sondaje y ensayos de laboratorio acreditados.",
   },
   {
     id: 3,
     imageSrc: "/hero03.jpg",
     title: "Control de Calidad en Obras Civiles",
-    description: "Supervisión y garantía de calidad en todos los procesos constructivos.",
+    description:
+      "Supervisamos y aseguramos la calidad en todos los procesos constructivos, incluyendo ensayos de laboratorio y de campo para materiales de construcción.",
   },
   {
     id: 4,
     imageSrc: "/hero04.jpg",
     title: "Consultoría Especializada",
-    description: "Asesoramiento técnico especializado en geotecnia e ingeniería civil.",
+    description:
+      "Brindamos asesoría técnica especializada en geotecnia, geofísica, pavimentos, concreto y medio ambiente, garantizando cumplimiento de normas internacionales.",
   },
 ];
 
 const Galeria = () => {
   return (
-    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8 font-sans">
+    <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Encabezado */}
         <div className="text-center mb-12">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -51,29 +55,30 @@ const Galeria = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-gray-600"
+            className="text-lg text-gray-700"
           >
-            Soluciones diseñadas para ti
+            Servicios especializados en ingeniería geotécnica, laboratorio y
+            control de calidad.
           </motion.p>
-          <motion.div 
+          <motion.div
             initial={{ width: 0 }}
-            animate={{ width: "100px" }}
+            animate={{ width: "80px" }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="h-1 bg-orange-500 mx-auto mt-4"
+            className="h-1 bg-[#2c3e50] mx-auto mt-4"
           />
         </div>
 
         {/* Grid de servicios */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {serviciosData.map((servicio, index) => (
             <motion.div
               key={servicio.id}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 ease: "easeOut",
-                delay: index * 0.1 
+                delay: index * 0.1,
               }}
               whileHover={{ y: -5 }}
               className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 transition-all duration-300 hover:shadow-lg"
@@ -86,18 +91,21 @@ const Galeria = () => {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-black/20" />
+                <div className="absolute inset-0 bg-black/10" />
               </div>
               <div className="p-5">
-                <h3 className="font-semibold text-gray-800 mb-3 text-lg">
+                <h3 className="font-semibold text-[#2c3e50] mb-3 text-lg">
                   {servicio.title}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4">
                   {servicio.description}
                 </p>
-                <button className="flex items-center text-orange-600 font-medium text-sm hover:text-orange-700 transition-colors">
-                  Ver detalles <FaArrowRight className="ml-2" />
-                </button>
+
+                <Link href="/servicios" className="">
+                  <button className="flex items-center cursor-pointer text-[#2c3e50] font-medium text-sm hover:text-gray-900 transition-colors">
+                    Ver detalles <FaArrowRight className="ml-2" />
+                  </button>
+                </Link>
               </div>
             </motion.div>
           ))}
@@ -108,11 +116,11 @@ const Galeria = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-8 border border-orange-200"
+          className="bg-white rounded-xl p-8 border border-gray-200 shadow-md"
         >
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="flex-shrink-0">
-              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 bg-[#2c3e50] rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-lg">95%</span>
               </div>
             </div>
@@ -121,16 +129,17 @@ const Galeria = () => {
                 Implementación de Laboratorio en Obra
               </h3>
               <p className="text-gray-700 mb-4">
-                Nuestro servicio principal con el más alto índice de satisfacción clientes. 
-                Más de 200 proyectos completados exitosamente.
+                Nuestro servicio principal con el más alto índice de
+                satisfacción de clientes. Contamos con experiencia en más de 200
+                proyectos, asegurando confiabilidad y calidad en cada estudio y
+                ensayo.
               </p>
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+              <button className="bg-[#2c3e50] hover:bg-gray-900 text-white px-6 py-2 rounded-lg font-medium transition-colors">
                 Solicitar cotización
               </button>
             </div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

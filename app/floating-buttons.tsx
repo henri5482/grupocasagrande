@@ -4,7 +4,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { FaArrowRight, FaFacebookF, FaWhatsapp } from "react-icons/fa";
-import { HiOutlineDotsVertical } from "react-icons/hi";
+import { HiOutlineDotsVertical, HiOutlineMail } from "react-icons/hi";
 
 // --- Types ---
 interface SocialFloatingButtonProps {
@@ -127,6 +127,13 @@ const FloatingButtons: React.FC = () => {
           bgColor="bg-blue-600"
           hoverBgColor="hover:bg-blue-700"
         />
+        <SocialFloatingButton
+          icon={<HiOutlineMail />}
+          label="Correo"
+          href="mailto:contacto@geofal.com.pe?subject=Solicitud de Información"
+          bgColor="bg-red-500"
+          hoverBgColor="hover:bg-red-600"
+        />
 
         {/* "More Options" button for Desktop */}
         <motion.div
@@ -180,6 +187,13 @@ const FloatingButtons: React.FC = () => {
           bgColor="bg-blue-600"
           hoverBgColor="hover:bg-blue-700"
           className="w-10 h-10 text-lg"
+        />
+        <SocialFloatingButton
+          icon={<HiOutlineMail />}
+          label="Correo"
+          href="mailto:contacto@geofal.com.pe?subject=Solicitud de Información"
+          bgColor="bg-red-500"
+          hoverBgColor="hover:bg-red-600"
         />
         <motion.div
           className="relative flex items-center justify-center"

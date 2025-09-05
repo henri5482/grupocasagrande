@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from "react";
 import Link from "next/link";
@@ -8,38 +8,58 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { FaClock, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
-// Datos de ejemplo de los servicios con imágenes
+// Servicios basados en el informe
 const servicios = [
   {
-    slug: "laboratorio",
-    titulo: "Laboratorio Geotécnico",
+    slug: "geologia",
+    titulo: "Geología",
     descripcion:
-      "Estudios y soluciones en geotecnia para proyectos seguros y eficientes.",
-    imagen: "/hero01.jpg",
+      "Análisis del terreno y su historia natural, estudios de riesgos, cartografía y supervisión de zonas críticas.",
+    imagen: "/hero05.jpg",
   },
   {
-    slug: "geotecnico",
-    titulo: " Geotécnico",
+    slug: "geotecnia",
+    titulo: "Geotecnia",
     descripcion:
-      "Estudios y soluciones en geotecnia para proyectos seguros y eficientes.",
+      "Estudios de cimentaciones, muros de contención, túneles y estabilidad de taludes para proyectos seguros.",
+    imagen: "/hero06.jpg",
+  },
+  {
+    slug: "laboratorio-geotecnico",
+    titulo: "Laboratorio Geotécnico",
+    descripcion:
+      "Ensayos en campo y laboratorio de suelos, rocas, concreto, asfalto y agua para garantizar calidad de materiales.",
+    imagen: "/hero04.jpg",
+  },
+  {
+    slug: "geofisica",
+    titulo: "Geofísica",
+    descripcion:
+      "Exploración del subsuelo mediante ensayos sísmicos, geoeléctricos y métodos no invasivos para identificar zonas críticas.",
     imagen: "/hero03.jpg",
   },
   {
-    slug: "pavimento",
-    titulo: "Laboratorio de Pavimento",
+    slug: "geomecanica",
+    titulo: "Geomecánica",
     descripcion:
-      "Estudios y soluciones en geotecnia para proyectos seguros y eficientes.",
-    imagen: "/hero05.jpg",
+      "Análisis de estabilidad de rocas, taludes y túneles con modelos numéricos y ensayos in situ.",
+    imagen: "/hero02.jpg",
+  },
+  {
+    slug: "hidrogeologia",
+    titulo: "Hidrogeología",
+    descripcion:
+      "Estudio y monitoreo del agua subterránea, interacción con suelos y estructuras, garantizando seguridad hídrica.",
+    imagen: "/hero01.jpg",
   },
 ];
 
 const Servicios = () => {
-  // ID del video de YouTube que quieres mostrar. 
-  // Reemplaza "dQw4w9WgXcQ" con el ID de tu video.
-  const youtubeVideoId = "dQw4w9WgXcQ";
+  const youtubeVideoId = "dQw4w9WgXcQ"; // Reemplazar por video real
 
   return (
-    <section className="py-16 px-2 md:px-6 max-w-7xl mx-auto">
+    <section className="py-16 px-4 md:px-6 max-w-7xl mx-auto">
+      {/* --- Título --- */}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -49,6 +69,7 @@ const Servicios = () => {
         Nuestros Servicios
       </motion.h1>
 
+      {/* --- Grid de servicios --- */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {servicios.map((servicio, index) => (
           <motion.div
@@ -58,8 +79,7 @@ const Servicios = () => {
             transition={{ duration: 0.6, delay: index * 0.2 }}
           >
             <Link href={`/servicios/${servicio.slug}`} passHref>
-              <Card className="relative shadow-lg rounded-2xl hover:shadow-xl transition-all duration-300 overflow-hidden group h-80">
-                {/* Imagen de fondo */}
+              <Card className="relative shadow-lg rounded-2xl hover:shadow-2xl transition-all duration-500 overflow-hidden group h-80">
                 <Image
                   src={servicio.imagen}
                   alt={servicio.titulo}
@@ -68,8 +88,6 @@ const Servicios = () => {
                   sizes="100vw"
                   priority={index === 0}
                 />
-
-                {/* Overlay oscuro */}
                 <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6">
                   <h3 className="text-white text-2xl font-bold mb-2">
                     {servicio.titulo}
@@ -77,7 +95,9 @@ const Servicios = () => {
                   <p className="text-gray-200 text-sm mb-4">
                     {servicio.descripcion}
                   </p>
-                  <Button className="w-full md:w-1/2">Ver más</Button>
+                  <Button className="w-full md:w-1/2 bg-orange-500 hover:bg-orange-600 text-white">
+                    Ver más
+                  </Button>
                 </div>
               </Card>
             </Link>
@@ -85,14 +105,15 @@ const Servicios = () => {
         ))}
       </div>
 
-     <div className="mt-16 md:mt-24">
+      {/* --- Video corporativo --- */}
+      <div className="mt-16 md:mt-24">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-3xl lg:text-4xl font-bold text-center mb-8 text-gray-800"
         >
-          Mira Nuestro Video
+          Mira Nuestro Video Corporativo
         </motion.h2>
 
         <motion.div
@@ -107,11 +128,11 @@ const Servicios = () => {
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          ></iframe>
+          />
         </motion.div>
       </div>
 
-      {/* --- Sección de Contacto --- */}
+      {/* --- Sección de contacto --- */}
       <div className="py-16 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -120,41 +141,37 @@ const Servicios = () => {
           className="bg-gray-50 rounded-3xl p-6 md:p-12 border border-gray-200 shadow-xl"
         >
           <div className="grid md:grid-cols-2 gap-8 md:gap-16">
-            {/* Contacto */}
             <div>
               <h3 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-6">
                 Contáctanos
               </h3>
               <div className="space-y-4">
                 <p className="flex items-center text-gray-600 text-lg">
-                  <FaPhoneAlt className="text-[#2c3e50] w-5 h-5 mr-4 flex-shrink-0" />
-                  +1 (234) 567-8900
+                  <FaPhoneAlt className="text-[#2c3e50] w-5 h-5 mr-4" />
+                  +51 987 654 321
                 </p>
                 <p className="flex items-center text-gray-600 text-lg">
-                  <FaEnvelope className="text-[#2c3e50] w-5 h-5 mr-4 flex-shrink-0" />
-                  info@laboratorio.com
+                  <FaEnvelope className="text-[#2c3e50] w-5 h-5 mr-4" />
+                  info@casagrande.com
                 </p>
                 <p className="flex items-center text-gray-600 text-lg">
-                  <FaClock className="text-[#2c3e50] w-5 h-5 mr-4 flex-shrink-0" />
+                  <FaClock className="text-[#2c3e50] w-5 h-5 mr-4" />
                   Lun-Vie: 8:00 AM - 6:00 PM
                 </p>
               </div>
             </div>
 
-            {/* Solicitar servicio */}
             <div className="border-t md:border-t-0 md:border-l border-gray-200 pt-8 md:pl-16 md:pt-0">
               <h3 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-6">
                 Solicita un Servicio
               </h3>
               <div className="space-y-4">
-                <Button
-                  className="w-full bg-[#2c3e50] hover:bg-[#1a242f] text-white py-6 text-lg rounded-xl shadow-lg cursor-pointer"
-                >
+                <Button className="w-full bg-[#2c3e50] hover:bg-[#1a242f] text-white py-6 text-lg rounded-xl shadow-lg">
                   Solicitar cotización
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full border-[#2c3e50] text-[#2c3e50] hover:bg-gray-100 py-6 text-lg rounded-xl transition-colors cursor-pointer"
+                  className="w-full border-[#2c3e50] text-[#2c3e50] hover:bg-gray-100 py-6 text-lg rounded-xl"
                 >
                   Agendar visita técnica
                 </Button>
