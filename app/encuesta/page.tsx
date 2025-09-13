@@ -1,12 +1,19 @@
 // src/app/page.tsx
 
+import Footer from "../footer";
+import Navbar from "../navbar";
 import SatisfactionForm from "./SatisfactionForm";
 
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+    <main className="">
+      <Navbar />
+      <div className="py-48">
+
       <SatisfactionForm />
+      </div>
+    <Footer />
     </main>
   );
 }
