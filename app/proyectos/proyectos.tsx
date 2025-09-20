@@ -17,12 +17,12 @@ const ProyectosPage = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <div className="inline-block bg-gradient-to-r from-[#1b4b52] to-[#2c3e50] rounded-lg px-6 py-3 mb-4 shadow-md">
+          <div className="inline-block bg-gradient-to-r bg-[#1b4772] rounded-lg px-6 py-3 mb-4 shadow-md">
             <span className="text-white text-sm font-semibold uppercase tracking-wider">
               Portafolio
             </span>
           </div>
-          <h2 className="text-3xl lg:text-5xl font-bold text-[#2c3e50] mb-4">
+          <h2 className="text-3xl lg:text-5xl font-bold text-[#1b4772]  mb-4">
             Nuestros Proyectos
           </h2>
           <p className="text-gray-600 text-base lg:text-lg max-w-3xl mx-auto">

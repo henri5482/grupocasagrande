@@ -77,10 +77,11 @@ const FloatingButtons: React.FC = () => {
 
   const moreOptionsData: MoreOption[] = [
     { text: "Inicio", href: "/", icon: <FaArrowRight /> },
-    { text: "Cursos", href: "/cursosall", icon: <FaArrowRight /> },
-    { text: "Certificado", href: "/certificado", icon: <FaArrowRight /> },
-    { text: "Profesores", href: "/docentes", icon: <FaArrowRight /> },
-    { text: "Sobre Nosotros", href: "/about", icon: <FaArrowRight /> },
+    { text: "Nosotros", href: "/nosotros", icon: <FaArrowRight /> },
+    { text: "Servicios", href: "/servicios", icon: <FaArrowRight /> },
+    { text: "Proyectos", href: "/proyectos", icon: <FaArrowRight /> },
+    { text: "Blog", href: "/blog", icon: <FaArrowRight /> },
+    { text: "Contacto", href: "/contacto", icon: <FaArrowRight /> },
     // { text: "Trabaja con nosotros", href: "/profesor", icon: <FaArrowRight /> },
   ];
 
@@ -116,21 +117,21 @@ const FloatingButtons: React.FC = () => {
         <SocialFloatingButton
           icon={<FaWhatsapp />}
           label="WhatsApp"
-          href="https://wa.me/51927545815?text=Hola%20quiero%20más%20información" // REMEMBER TO REPLACE!
+          href="https://wa.me/51945513323?text=Quiero%20mayor%20información" // REMEMBER TO REPLACE!
           bgColor="bg-green-500"
           hoverBgColor="hover:bg-green-600"
         />
         <SocialFloatingButton
           icon={<FaFacebookF />}
           label="Facebook"
-          href="https://www.facebook.com/YOUR_FACEBOOK_PAGE" // REMEMBER TO REPLACE!
+          href="https://www.facebook.com/profile.php?id=100077864046528&locale=es_LA" // REMEMBER TO REPLACE!
           bgColor="bg-blue-600"
           hoverBgColor="hover:bg-blue-700"
         />
         <SocialFloatingButton
           icon={<HiOutlineMail />}
           label="Correo"
-          href="mailto:contacto@geofal.com.pe?subject=Solicitud de Información"
+          href="https://mail.google.com/mail/?view=cm&to=comercial@casagrandegeotecnia.com.pe"
           bgColor="bg-red-500"
           hoverBgColor="hover:bg-red-600"
         />
@@ -175,7 +176,7 @@ const FloatingButtons: React.FC = () => {
         <SocialFloatingButton
           icon={<FaWhatsapp />}
           label="WhatsApp"
-          href="https://wa.me/YOUR_PHONE_NUMBER?text=Hola%20quiero%20más%20información" // REMEMBER TO REPLACE!
+          href="https://wa.me/51945513323?text=Quiero%20mayor%20información" // REMEMBER TO REPLACE!
           bgColor="bg-green-500"
           hoverBgColor="hover:bg-green-600"
           className="w-10 h-10 text-lg"
@@ -183,7 +184,7 @@ const FloatingButtons: React.FC = () => {
         <SocialFloatingButton
           icon={<FaFacebookF />}
           label="Facebook"
-          href="https://www.facebook.com/YOUR_FACEBOOK_PAGE" // REMEMBER TO REPLACE!
+          href="https://www.facebook.com/profile.php?id=100077864046528&locale=es_LA" // REMEMBER TO REPLACE!
           bgColor="bg-blue-600"
           hoverBgColor="hover:bg-blue-700"
           className="w-10 h-10 text-lg"
@@ -191,7 +192,7 @@ const FloatingButtons: React.FC = () => {
         <SocialFloatingButton
           icon={<HiOutlineMail />}
           label="Correo"
-          href="mailto:contacto@geofal.com.pe?subject=Solicitud de Información"
+          href="https://mail.google.com/mail/?view=cm&to=comercial@casagrandegeotecnia.com.pe"
           bgColor="bg-red-500"
           hoverBgColor="hover:bg-red-600"
         />

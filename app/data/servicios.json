@@ -22,7 +22,7 @@
       },
       {
         "titulo": "Cartografía y Modelado",
-        "imagenes": ["/hero05.jpg"],
+        "imagenes": ["/hero05.jpg", "/hero02.jpg"],
         "ensayos": [
           "Cartografía geológica detallada",
           "Modelado 3D del subsuelo",

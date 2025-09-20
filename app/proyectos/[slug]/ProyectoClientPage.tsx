@@ -65,7 +65,6 @@ interface Props {
 
 export default function ProyectoPage({ proyecto }: Props) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [index, setIndex] = useState(0);
 
   const statsRef = useRef(null);
@@ -76,11 +75,7 @@ export default function ProyectoPage({ proyecto }: Props) {
     setIndex(i);
   };
 
-  const next = () => setIndex((i) => (i + 1) % proyecto.galeria.length);
-  const prev = () =>
-    setIndex(
-      (i) => (i - 1 + proyecto.galeria.length) % proyecto.galeria.length
-    );
+
 
   return (
     <div className="bg-[#f8f9fa] text-[#111827] min-h-screen">
@@ -94,7 +89,7 @@ export default function ProyectoPage({ proyecto }: Props) {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1b4b52]/90 to-[#2c3e50]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1b4772]/70 to-[#1b4772]/20" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
           <motion.h1
             className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4"
@@ -111,7 +106,7 @@ export default function ProyectoPage({ proyecto }: Props) {
           >
             {proyecto.descripcion}
           </motion.p>
-          <span className="mt-4 px-4 py-1 rounded-full text-sm bg-white/20 text-gray-100 backdrop-blur-sm border border-white/30">
+          <span className="mt-4 px-4 py-2 rounded-full text-sm bg-[#1b4772]/20 font-semibold text-white backdrop-blur-sm border border-white">
             {proyecto.categoria}
           </span>
         </div>
@@ -120,7 +115,7 @@ export default function ProyectoPage({ proyecto }: Props) {
       {/* Métricas */}
       <section ref={statsRef} className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1b4b52] tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1b4772] tracking-tight">
             Métricas del Proyecto
           </h2>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
@@ -137,7 +132,7 @@ export default function ProyectoPage({ proyecto }: Props) {
               transition={{ delay: i * 0.15 }}
               className="bg-[#f9fafb] rounded-2xl border border-[#e5e7eb] p-8 text-center shadow-sm hover:shadow-md transition"
             >
-              <p className="text-4xl md:text-5xl font-extrabold text-[#1b4b52] mb-3">
+              <p className="text-4xl md:text-5xl font-extrabold text-[#1b4772] mb-3">
                 <CountingNumber
                   value={s.value}
                   suffix={s.suffix}
@@ -156,19 +151,19 @@ export default function ProyectoPage({ proyecto }: Props) {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-white rounded-xl border border-[#e5e7eb] p-6 shadow-sm">
-            <h3 className="text-sm font-bold uppercase text-[#1b4b52] mb-1">
+            <h3 className="text-sm font-bold uppercase text-[#1b4772] mb-1">
               Cliente
             </h3>
             <p className="text-lg font-medium">{proyecto.cliente}</p>
           </div>
           <div className="bg-white rounded-xl border border-[#e5e7eb] p-6 shadow-sm">
-            <h3 className="text-sm font-bold uppercase text-[#1b4b52] mb-1">
+            <h3 className="text-sm font-bold uppercase text-[#1b4772] mb-1">
               Obra
             </h3>
             <p className="text-lg font-medium">{proyecto.obra}</p>
           </div>
           <div className="bg-white rounded-xl border border-[#e5e7eb] p-6 shadow-sm">
-            <h3 className="text-sm font-bold uppercase text-[#1b4b52] mb-1">
+            <h3 className="text-sm font-bold uppercase text-[#1b4772] mb-1">
               Trabajo
             </h3>
             <p className="text-lg font-medium">{proyecto.trabajo}</p>
@@ -177,7 +172,7 @@ export default function ProyectoPage({ proyecto }: Props) {
 
         {/* Detalles */}
         <div className="mt-12 bg-white rounded-2xl border border-[#e5e7eb] shadow-md p-8">
-          <h2 className="text-2xl font-bold text-[#1b4b52] mb-6">
+          <h2 className="text-2xl font-bold text-[#1b4772] mb-6">
             Detalles del Proyecto
           </h2>
           <ul className="space-y-6">
@@ -188,7 +183,7 @@ export default function ProyectoPage({ proyecto }: Props) {
               <b>Metodología:</b> {proyecto.detalles.metodologia}
             </li>
             <li>
-              <b className="flex gap-2 items-center text-[#1b4b52]">
+              <b className="flex gap-2 items-center text-[#1b4772]">
                 <CheckCircle className="w-5 h-5" /> Resultados:
               </b>
               <ul className="list-disc ml-8 mt-2 text-gray-700 space-y-1">
@@ -204,7 +199,7 @@ export default function ProyectoPage({ proyecto }: Props) {
       {/* Cronograma */}
       <section className="bg-white py-16">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-bold text-[#1b4b52] mb-10 text-center">
+          <h2 className="text-2xl font-bold text-[#1b4772] mb-10 text-center">
             Fases del Proyecto
           </h2>
           <div className="space-y-8">
@@ -217,7 +212,7 @@ export default function ProyectoPage({ proyecto }: Props) {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
               >
-                <div className="w-10 h-10 rounded-full bg-[#1b4b52] text-white flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-full bg-[#1b4772] text-white flex items-center justify-center font-bold">
                   {i + 1}
                 </div>
                 <div>
@@ -232,7 +227,7 @@ export default function ProyectoPage({ proyecto }: Props) {
 
       {/* Testimonio */}
       {proyecto.testimonio && (
-        <section className="bg-[#1b4b52] py-20 text-white text-center">
+        <section className="bg-[#1b4772] py-20 text-white text-center">
           <div className="max-w-3xl mx-auto px-6">
             <MessageSquare className="w-10 h-10 mx-auto mb-4 opacity-80" />
             <p className="text-lg italic mb-6">{proyecto.testimonio.mensaje}</p>
@@ -246,7 +241,7 @@ export default function ProyectoPage({ proyecto }: Props) {
 
       {/* Galería */}
       <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold text-[#1b4b52] mb-6">Galería</h2>
+        <h2 className="text-2xl font-bold text-[#1b4772] mb-6">Galería</h2>
         <Carousel
           opts={{ align: "start", loop: true }}
           className="w-full relative"
@@ -274,10 +269,10 @@ export default function ProyectoPage({ proyecto }: Props) {
           </CarouselContent>
 
           {/* Botones de navegación con diseño circular, visibles solo en md+ */}
-          <CarouselPrevious className="hidden md:flex items-center cursor-pointer justify-center absolute left-2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-[#1b4b52]/80 hover:bg-[#1b4b52]/100 rounded-full shadow-lg text-white transition">
+          <CarouselPrevious className="hidden md:flex items-center cursor-pointer justify-center absolute left-2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-[#1b4772]/80 hover:bg-[#1b4772]/100 rounded-full shadow-lg text-white transition">
             <ChevronLeft className="w-6 h-6" />
           </CarouselPrevious>
-          <CarouselNext className="hidden md:flex cursor-pointer items-center justify-center absolute right-2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-[#1b4b52]/80 hover:bg-[#1b4b52]/100 rounded-full shadow-lg text-white transition">
+          <CarouselNext className="hidden md:flex cursor-pointer items-center justify-center absolute right-2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-[#1b4772]/80 hover:bg-[#1b4772]/100 rounded-full shadow-lg text-white transition">
             <ChevronRight className="w-6 h-6" />
           </CarouselNext>
         </Carousel>
@@ -310,7 +305,7 @@ export default function ProyectoPage({ proyecto }: Props) {
               {/* Botón cerrar */}
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center  text-white rounded-full shadow-lg  transition text-4xl cursor-pointer z-20"
+                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center  text-white font-black rounded-full shadow-lg  transition text-4xl cursor-pointer z-20"
               >
                 &times;
               </button>
@@ -324,7 +319,7 @@ export default function ProyectoPage({ proyecto }: Props) {
                       proyecto.galeria.length
                   )
                 }
-                className="hidden md:flex absolute cursor-pointer left-4 top-1/2 -translate-y-1/2 w-12 h-12 items-center justify-center bg-[#1b4b52]/80 hover:bg-[#1b4b52]/100 text-white rounded-full shadow-lg transition z-20"
+                className="hidden md:flex absolute cursor-pointer left-4 top-1/2 -translate-y-1/2 w-12 h-12 items-center justify-center bg-[#1b4772]/80 hover:bg-[#1b4772]/100 text-white rounded-full shadow-lg transition z-20"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
@@ -334,7 +329,7 @@ export default function ProyectoPage({ proyecto }: Props) {
                 onClick={() =>
                   setIndex((prev) => (prev + 1) % proyecto.galeria.length)
                 }
-                className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 cursor-pointer items-center justify-center bg-[#1b4b52]/80 hover:bg-[#1b4b52]/100 text-white rounded-full shadow-lg transition z-20"
+                className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 cursor-pointer items-center justify-center bg-[#1b4772]/80 hover:bg-[#1b4772]/100 text-white rounded-full shadow-lg transition z-20"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -349,7 +344,7 @@ export default function ProyectoPage({ proyecto }: Props) {
       </AnimatePresence>
 
       {/* CTA final */}
-      <section className="bg-gradient-to-r from-[#1b4b52] to-[#2c3e50] text-white py-20 text-center">
+      <section className="bg-gradient-to-r from-[#1b4772] to-[#2c3e50] text-white py-20 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
           ¿Quieres un proyecto como este?
         </h2>
@@ -358,7 +353,7 @@ export default function ProyectoPage({ proyecto }: Props) {
         </p>
         <a
           href="/contacto"
-          className="px-6 py-3 bg-white text-[#1b4b52] font-bold rounded-full shadow-md hover:shadow-lg transition"
+          className="px-6 py-3 bg-white text-[#1b4772] font-bold rounded-full shadow-md hover:shadow-lg transition"
         >
           Contáctanos
         </a>

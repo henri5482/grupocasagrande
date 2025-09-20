@@ -64,7 +64,7 @@ const Servicios = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl lg:text-4xl font-bold text-center mb-12 text-[#2c3e50]"
+        className="text-3xl lg:text-4xl font-bold text-center mb-12 text-[#1b4772]"
       >
         Nuestros Servicios
       </motion.h1>
@@ -95,7 +95,7 @@ const Servicios = () => {
                   <p className="text-gray-200 text-sm mb-4">
                     {servicio.descripcion}
                   </p>
-                  <Button className="w-full md:w-1/2 bg-orange-500 hover:bg-orange-600 text-white">
+                  <Button className="w-full md:w-1/2 bg-[#1b4772] hover:bg-[#1a242f] text-white cursor-pointer">
                     Ver más
                   </Button>
                 </div>
@@ -111,7 +111,7 @@ const Servicios = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl lg:text-4xl font-bold text-center mb-8 text-gray-800"
+          className="text-3xl lg:text-4xl font-bold text-center mb-8 text-[#1b4772] "
         >
           Mira Nuestro Video Corporativo
         </motion.h2>
@@ -142,20 +142,20 @@ const Servicios = () => {
         >
           <div className="grid md:grid-cols-2 gap-8 md:gap-16">
             <div>
-              <h3 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-6">
+              <h3 className="text-2xl lg:text-3xl font-bold text-[#1b4772]  mb-6">
                 Contáctanos
               </h3>
               <div className="space-y-4">
-                <p className="flex items-center text-gray-600 text-lg">
-                  <FaPhoneAlt className="text-[#2c3e50] w-5 h-5 mr-4" />
-                  +51 987 654 321
+                <p className="flex items-center   text-lg">
+                  <FaPhoneAlt className="text-[#1b4772]  w-5 h-5 mr-4" />
+                  +51 945 513 323
                 </p>
-                <p className="flex items-center text-gray-600 text-lg">
-                  <FaEnvelope className="text-[#2c3e50] w-5 h-5 mr-4" />
-                  info@casagrande.com
+                <p className="flex items-center   text-lg">
+                  <FaEnvelope className="text-[#1b4772]  w-5 h-5 mr-4" />
+                  comercial@casagrandegeotecnia.com.pe
                 </p>
-                <p className="flex items-center text-gray-600 text-lg">
-                  <FaClock className="text-[#2c3e50] w-5 h-5 mr-4" />
+                <p className="flex items-center  text-lg">
+                  <FaClock className="text-[#1b4772] w-5 h-5 mr-4" />
                   Lun-Vie: 8:00 AM - 6:00 PM
                 </p>
               </div>
@@ -166,12 +166,12 @@ const Servicios = () => {
                 Solicita un Servicio
               </h3>
               <div className="space-y-4">
-                <Button className="w-full bg-[#2c3e50] hover:bg-[#1a242f] text-white py-6 text-lg rounded-xl shadow-lg">
+                <Button className="w-full bg-[#1b4772] hover:bg-[#1a242f] text-white py-6 text-lg rounded-xl shadow-lg">
                   Solicitar cotización
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full border-[#2c3e50] text-[#2c3e50] hover:bg-gray-100 py-6 text-lg rounded-xl"
+                  className="w-full border-[#1b4772]  text-[#1b4772]  hover:bg-gray-100 py-6 text-lg rounded-xl"
                 >
                   Agendar visita técnica
                 </Button>

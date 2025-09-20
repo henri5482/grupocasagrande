@@ -8,7 +8,7 @@ const Mapa = () => {
     <section className="w-full mt-16 flex flex-col items-center px-4">
       {/* Título */}
       <div className="text-center mb-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#1b4b52]">Encuéntranos</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#1b4772]">Encuéntranos</h2>
         <p className="text-gray-600 mt-2">Tu mensaje es importante para nosotros</p>
       </div>
 

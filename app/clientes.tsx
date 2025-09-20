@@ -3,36 +3,45 @@ import { Marquee } from "@/components/magicui/marquee";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
+// CAMBIO: Se elimina useState porque ya no es necesario
+// import { useState } from "react"; 
 
-// Logos de empresas
+// Logos de empresas (sin cambios)
 const companies = [
-  { name: "Cámara de Comercio de Lima", logo: "/logo01.png" },
-  { name: "Partner Estratégico", logo: "/logo05.png" },
-  { name: "Organización Internacional", logo: "/logo04.png" },
-  { name: "Asociación de Negocios", logo: "/logo03.png" },
-  { name: "Instituto Certificador", logo: "/logo02.png" },
+  { name: "Municipalidad Distrital Andrés Avelino Cáceres", logo: "/logos/logo-andres-avelino.webp" },
+  { name: "Prider Ayacucho GRA", logo: "/logos/logo-prider.webp" },
+  { name: "Municipalidad Provincial de Huamanga", logo: "/logos/logo-mucipalidad-huamanga.webp" },
+  { name: "Constructora ECP Ingenieros", logo: "/logos/logo-constructora-ECP.webp" },
+  { name: "Geomecánica Latinoamericana", logo: "/logos/logo-geomecanica.webp" },
+  { name: "Compañía Crow", logo: "/logos/logo-compañia-crow.webp" },
+  { name: "Mafy Ingenieros Contratistas", logo: "/logos/logo-ingenieros-contratistas.webp" },
+  { name: "Tractores eirl ", logo: "/logos/logo-tractores.webp" },
+  { name: "JC Camila Inversiones EIRL", logo: "/logos/logo-jc-inversiones.webp" },
 ];
 
-// Duplicamos para efecto de scroll continuo
 const marqueeItems = [...companies, ...companies, ...companies];
 
-const CompanyLogo = ({ name, logo }: { name: string; logo: string }) => {
+// CAMBIO: Se eliminan las props onMouseEnter y onMouseLeave para simplificar
+const CompanyLogo = ({ name, logo }: { name:string; logo:string; }) => {
   return (
     <motion.div
-      className="mx-4 flex flex-col items-center justify-center p-2"
+      // CAMBIO 2: Se añade la clase 'force-gpu' para mejorar la fluidez
+      className="mx-4 flex flex-col items-center justify-center p-2 duration-300 cursor-pointer force-gpu" 
       whileHover={{ scale: 1.05, y: -3 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
-      <div className="relative w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+      <div className="relative w-20 h-20 md:w-28 md:h-28 flex items-center justify-center cursor-pointer">
         <Image
           priority
           fill
           src={logo}
           alt={`${name} logo`}
-          className="object-contain transition-all duration-300 grayscale hover:grayscale-0 opacity-80 hover:opacity-100"
+          className="object-contain transition-all duration-300"
+          // Añadimos tamaños para optimizar la carga de la imagen
+          sizes="(max-width: 768px) 80px, 96px"
         />
       </div>
-      <p className="text-xs text-center text-gray-700 mt-1 max-w-[100px] leading-tight hidden md:block">
+      <p className="text-xs text-center text-[#1b4772] mt-1 max-w-[100px] leading-tight">
         {name}
       </p>
     </motion.div>
@@ -40,6 +49,9 @@ const CompanyLogo = ({ name, logo }: { name: string; logo: string }) => {
 };
 
 const Trusted = () => {
+  // CAMBIO: Se eliminan el estado y las funciones handleMouseEnter/Leave
+  // const [isPaused, setIsPaused] = useState(false);
+  
   const textTransition = { duration: 0.7, ease: "easeOut" as const, staggerChildren: 0.15 };
   const itemTransition = { duration: 0.5, ease: "easeOut" as const };
 
@@ -54,8 +66,7 @@ const Trusted = () => {
   };
 
   return (
-    <div className={cn("w-full overflow-hidden py-12 md:py-16 relative", "bg-white text-[#2c3e50]")}>
-      {/* Título y descripción */}
+    <div className={cn("w-full overflow-hidden py-8 md:pt-16 relative", "bg-white text-[#1b4772]")}>
       <div className="relative z-10 max-w-3xl mx-auto px-4 text-center mb-10">
         <motion.div
           initial="hidden"
@@ -68,7 +79,7 @@ const Trusted = () => {
             variants={itemVariants}
           >
             Nuestros{" "}
-            <span className="text-[#2c3e50] font-bold">Socios Estratégicos</span>
+            <span className="text-[#1b4772] font-bold">Socios Estratégicos</span>
           </motion.h2>
           <motion.p
             className="text-base md:text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto"
@@ -80,11 +91,16 @@ const Trusted = () => {
         </motion.div>
       </div>
 
-      {/* Marquesina de logos */}
       <div className="relative z-10 flex w-full flex-col items-center">
-        <Marquee className="[--duration:40s] gap-6" pauseOnHover={false}>
+        {/* CAMBIO 1: Se aumenta la duración para que sea más lento */}
+        {/* CAMBIO 3: Se usa 'pauseOnHover={true}' directamente */}
+        <Marquee className="[--duration:80s] gap-6" pauseOnHover={true}>
           {marqueeItems.map((company, idx) => (
-            <CompanyLogo key={`company-${company.name}-${idx}`} {...company} />
+            // CAMBIO: Se eliminan las props que ya no se usan
+            <CompanyLogo 
+              key={`company-${company.name}-${idx}`} 
+              {...company} 
+            />
           ))}
         </Marquee>
       </div>

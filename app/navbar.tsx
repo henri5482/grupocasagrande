@@ -15,7 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaFacebook, FaLinkedin, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { MdOutgoingMail } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 
@@ -47,21 +47,47 @@ const navLinks: NavLink[] = [
 ];
 
 const socialLinks: SocialLink[] = [
-  { href: "https://facebook.com", label: "Facebook", Icon: FaFacebook },
-  { href: "https://linkedin.com", label: "LinkedIn", Icon: FaLinkedin },
-  { href: "https://youtube.com", label: "YouTube", Icon: FaYoutube },
+  {
+    href: "https://www.facebook.com/profile.php?id=100077864046528&locale=es_LA",
+    label: "Facebook",
+    Icon: FaFacebook,
+  },
+  {
+    href: "https://www.linkedin.com/in/david-guerra-4a9b44385/",
+    label: "LinkedIn",
+    Icon: FaLinkedin,
+  },
+  {
+    href: "https://www.youtube.com/channel/UCIuOx9lfSBKoJ5QsRlQjA7Q",
+    label: "YouTube",
+    Icon: FaYoutube,
+  },
+  {
+    href: "https://www.instagram.com/casagrandegeotecnia/",
+    label: "Instagram",
+    Icon: FaInstagram,
+  },
+  {
+    href: "https://www.tiktok.com/@casagrandegeotecnia?lang=es-419",
+    label: "TikTok",
+    Icon: FaTiktok,
+  },
 ];
 
 const contactInfo: ContactInfoItemProps[] = [
   {
-    text: "laboratorio@geofal.com.pe",
-    href: "mailto:laboratorio@geofal.com.pe",
+    text: "comercial@casagrandegeotecnia.com.pe",
+    href: "https://mail.google.com/mail/?view=cm&to=comercial@casagrandegeotecnia.com.pe",
     Icon: MdOutgoingMail,
   },
-  { text: "(+51) 981 696 426", href: "tel:+51981696426", Icon: FaWhatsapp },
   {
-    text: "Av. Rio Marañon N° 763, Los Olivos",
-    href: "https://maps.google.com/?q=Av.+Rio+Marañon+N°+763,+Los+Olivos,+Perú",
+    text: "(+51) 945 513 323",
+    href: "https://wa.me/51945513323?text=Quiero%20mayor%20información",
+    Icon: FaWhatsapp,
+  },
+  {
+    text: "Jirón Quinua 570, Ayacucho 05003",
+    href: "https://maps.app.goo.gl/87csZHznG2rnQQgV9",
     Icon: LuMapPin,
   },
 ];
@@ -71,6 +97,8 @@ const ContactInfoItem = ({ text, href, Icon }: ContactInfoItemProps) => (
   <a
     href={href}
     className="flex items-center gap-2 text-xs text-white transition-opacity hover:opacity-80"
+    target="_blank"
+    rel="noopener noreferrer"
   >
     <Icon className="h-4 w-4" />
     <span>{text}</span>

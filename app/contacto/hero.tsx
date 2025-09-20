@@ -190,7 +190,7 @@ export default function HeroContacto() {
           <button
             key={index}
             className={`h-2 w-2 rounded-full transition-all duration-300 ${
-              index === slideIndex ? "w-6 bg-orange-500" : "bg-gray-400"
+              index === slideIndex ? "w-6 bg-[#1b4772]" : "bg-gray-400"
             }`}
             onClick={() => {
               const newDirection = index > slideIndex ? 1 : -1;

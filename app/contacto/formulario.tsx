@@ -14,7 +14,7 @@ const Formulario = () => {
           <h1 className="text-4xl font-bold text-gray-800">Contacto</h1>
           <p className="text-gray-600 mt-1 md:text-lg">Tu mensaje es importante para nosotros.</p>
         </div>
-        <div className="hidden md:block flex-grow h-1 bg-[#fa5524] rounded-full"></div>
+        <div className="hidden md:block flex-grow h-1 bg-[#1b4772] rounded-full"></div>
       </div>
 
       {/* Main content container */}
@@ -53,7 +53,7 @@ const Formulario = () => {
                 <input
                   type="text"
                   id="nombre"
-                  className="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-1 focus:ring-[#fa5524] focus:border-[#fa5524] transition-all"
+                  className="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-1 focus:ring-[#1b4772] focus:border-[#1b4772] transition-all"
                 />
               </div>
               <div>
@@ -61,7 +61,7 @@ const Formulario = () => {
                 <input
                   type="text"
                   id="empresa"
-                  className="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-1 focus:ring-[#fa5524] focus:border-[#fa5524] transition-all"
+                  className="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-1 focus:ring-[#1b4772] focus:border-[#1b4772] transition-all"
                 />
               </div>
             </div>
@@ -72,7 +72,7 @@ const Formulario = () => {
                 <input
                   type="email"
                   id="correo"
-                  className="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-1 focus:ring-[#fa5524] focus:border-[#fa5524] transition-all"
+                  className="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-1 focus:ring-[#1b4772] focus:border-[#1b4772] transition-all"
                 />
               </div>
               <div>
@@ -80,7 +80,7 @@ const Formulario = () => {
                 <input
                   type="tel"
                   id="telefono"
-                  className="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-1 focus:ring-[#fa5524] focus:border-[#fa5524] transition-all"
+                  className="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-1 focus:ring-[#1b4772] focus:border-[#1b4772] transition-all"
                 />
               </div>
             </div>
@@ -90,13 +90,13 @@ const Formulario = () => {
               <textarea
                 id="mensaje"
                 rows={4}
-                className="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 resize-none focus:ring-1 focus:ring-[#fa5524] focus:border-[#fa5524] transition-all"
+                className="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 resize-none focus:ring-1 focus:ring-[#1b4772] focus:border-[#1b4772] transition-all"
               />
             </div>
             
             <button
               type="submit"
-              className="w-full py-3 px-4 bg-[#fa5524] text-white font-bold rounded-md shadow-lg hover:bg-[#d64a1e] transition-colors"
+              className="w-full py-3 px-4 bg-[#1b4772] text-white font-bold rounded-md shadow-lg hover:bg-[#d64a1e] transition-colors"
             >
               ENVIAR
             </button>
@@ -107,15 +107,15 @@ const Formulario = () => {
             <h3 className="text-xl font-bold text-gray-800 mb-4">Dejanos tu Contacto</h3>
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-[#fa5524]" />
-                <span>(+51) 981 696 426 | laboratorio@geofal.com.pe</span>
+                <Phone className="w-5 h-5 text-[#1b4772]" />
+                <span>(+51) 945 513 323 | comercial@casagrandegeotecnia.com.pe</span>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-[#fa5524]" />
-                <span>(+51) 982 429 895 | asesorcomercial@geofal.com.pe</span>
+                <Phone className="w-5 h-5 text-[#1b4772]" />
+                <span>(+51) 945 513 323 | comercial@casagrandegeotecnia.com.pe</span>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-[#fa5524]" />
+                <Mail className="w-5 h-5 text-[#1b4772]" />
                 <span>(01) 9051911</span>
               </li>
             </ul>

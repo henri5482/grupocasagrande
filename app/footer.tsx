@@ -8,8 +8,8 @@ import {
   PiFacebookLogo,
   PiInstagramLogo,
   PiLinkedinLogo,
-  PiTwitterLogo,
   PiYoutubeLogo,
+  PiTiktokLogo
 } from "react-icons/pi";
 
 const Footer = () => {
@@ -17,7 +17,7 @@ const Footer = () => {
   const aboutLinks = [
     { name: "¿Sobre Nosotros?", href: "/nosotros" },
     { name: "El equipo", href: "/nosotros" },
-    { name: "Enunciado de misión", href: "/about" },
+    { name: "Enunciado de misión", href: "/nosotros" },
     { name: "Marca y logotipo", href: "/about" },
   ];
 
@@ -26,9 +26,12 @@ const Footer = () => {
     {
       title: "Soporte al cliente",
       links: [
-        { name: "(+51) 981 696 426", href: "tel:+51981696426" },
-        { name: "laboratorio@geofal.com.pe", href: "/terminosycondiciones" },
-        { name: "Redes sociales", href: "https://wa.me/51927545815?text=Hola%20quiero%hacerme%20vip" },
+        { name: "(+51) 945 513 323", href: "tel:+51945513323" },
+        { name: "comercial@casagrandegeotecnia.com.pe", href: "https://mail.google.com/mail/?view=cm&to=comercial@casagrandegeotecnia.com.pe" },
+        {
+          name: "Redes sociales",
+          href: "https://wa.me/51927545815?text=Hola%20quiero%hacerme%20vip",
+        },
       ],
     },
   ];
@@ -46,20 +49,24 @@ const Footer = () => {
     {
       icon: PiFacebookLogo,
       name: "Facebook",
-      href: "https://www.facebook.com/",
+      href: "https://www.facebook.com/profile.php?id=100077864046528&locale=es_LA",
     },
     {
       icon: PiInstagramLogo,
       name: "Instagram",
-      href: "https://www.instagram.com/",
+      href: "https://www.instagram.com/casagrandegeotecnia/",
     },
-    { icon: PiTwitterLogo, name: "Twitter", href: "https://twitter.com/" },
+    {
+      icon: PiTiktokLogo,
+      name: "TikTok",
+      href: "https://www.tiktok.com/@casagrandegeotecnia?lang=es-419",
+    },
     {
       icon: PiLinkedinLogo,
       name: "LinkedIn",
-      href: "https://www.linkedin.com/",
+      href: "https://www.linkedin.com/in/david-guerra-4a9b44385/",
     },
-    { icon: PiYoutubeLogo, name: "YouTube", href: "https://www.youtube.com/" },
+    { icon: PiYoutubeLogo, name: "YouTube", href: "https://www.youtube.com/channel/UCIuOx9lfSBKoJ5QsRlQjA7Q" },
   ];
 
   // Function to scroll to top
@@ -94,7 +101,7 @@ const Footer = () => {
           </Link>
           <button
             onClick={scrollToTop}
-            className="flex items-center text-sm font-medium text-[#1b4772] hover:text-red-950 transition-colors group"
+            className="flex items-center text-sm font-medium text-[#1b4772] hover:text-blue-700 transition-colors group cursor-pointer"
             aria-label="Volver arriba"
           >
             Volver arriba
@@ -132,8 +139,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-y-10 lg:gap-x-12 mb-8 sm:mb-12">
           {/* Section: JEDteam (About) */}
           <div className="py-2">
-            <h2 className="text-lg font-bold mb-4 text-[#1b4772]">
-            </h2>
+            <h2 className="text-lg font-bold mb-4 text-[#1b4772]"></h2>
             <nav>
               <ul className="space-y-2 sm:space-y-3">
                 {aboutLinks.map((link) => (
@@ -141,6 +147,8 @@ const Footer = () => {
                     <Link
                       href={link.href}
                       className="text-gray-700 hover:text-red-600 hover:underline transition-colors flex items-center text-sm group"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#1b4772] mr-2 flex-shrink-0 group-hover:bg-[#1b4772] transition-colors"></span>
                       {link.name}
@@ -151,7 +159,6 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* Section: Conecta con EDteam */}
           <div className="py-2">
             <h2 className="text-lg font-bold mb-4 text-[#1b4772]">
               Conecta con Nosotros
@@ -168,6 +175,8 @@ const Footer = () => {
                         <Link
                           href={link.href}
                           className="text-gray-700 hover:text-red-600 hover:underline transition-colors flex items-center text-sm group"
+                          target={link.href.startsWith("http") ? "_blank" : undefined}
+                          rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                         >
                           <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#1b4772] mr-2 flex-shrink-0 group-hover:bg-red-600 transition-colors"></span>
                           {link.name}
@@ -192,6 +201,8 @@ const Footer = () => {
                     <Link
                       href={link.href}
                       className="text-gray-700 hover:text-red-600 hover:underline transition-colors flex items-center text-sm group"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#1b4772] mr-2 flex-shrink-0 group-hover:bg-red-500 transition-colors"></span>
                       {link.name}
@@ -215,6 +226,8 @@ const Footer = () => {
                   href={social.href}
                   className="text-[#1b4772] hover:text-[#0d70af] transition-colors p-2 rounded-full hover:scale-110 transform"
                   aria-label={social.name}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <social.icon size={22} />
                 </Link>
@@ -242,8 +255,8 @@ const Footer = () => {
         {/* Copyright and Legal Links */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-2 sm:pt-4">
           <div className="text-gray-600 text-xs sm:text-sm mb-3 md:mb-0 text-center md:text-left leading-relaxed">
-            © {new Date().getFullYear()} Casagrande.
-            Todos los derechos reservados.
+            © {new Date().getFullYear()} Casagrande Geotecnia. Todos los derechos
+            reservados.
           </div>
           <nav className="flex flex-wrap justify-center gap-x-3 sm:gap-x-4 gap-y-1 sm:gap-y-2 items-center">
             <Link
@@ -259,7 +272,6 @@ const Footer = () => {
             >
               Política de privacidad
             </Link>
-           
           </nav>
         </div>
       </div>
